@@ -2,6 +2,7 @@ const data = require('../utils/data');
 const db = require('../config/connection');
 const { User, Post } = require('../models');
 
+// insert data from ../utils/data into mongoDB database
 db.once('open', async () => {
   try {
     await User.deleteMany();
