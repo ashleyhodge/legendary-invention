@@ -64,6 +64,22 @@ const resolvers = {
       // return auth object including the token and any user data
       const token = signToken(user)
       return { user, token };
+    },
+    // create a new post
+    addPost: async (parent, args, context) => {
+      if(context.user.admin === true) {
+        const post = await Post.create({ ...args, username: context.user.username });
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { posts: post._id } },
+          { new: true }
+        );
+
+        return post;
+      }
+
+      throw new AuthenticationError('You are not logged in')
     }
   }
 };

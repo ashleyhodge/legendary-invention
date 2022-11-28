@@ -4,14 +4,14 @@ const data = {
     {
       username: 'John',
       email: 'admin@example.com',
-      password: 123456,
+      password: '123456',
       isAdmin: true,
 			post: []
     },
     {
       username: 'Jane',
       email: 'user@example.com',
-      password: 123456,
+      password: '123456',
       isAdmin: false,
 			post: []
     },
