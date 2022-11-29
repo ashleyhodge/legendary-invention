@@ -1,8 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-
-// Create userSchema
 const userSchema = new Schema(
   {
     username: {
@@ -27,7 +25,7 @@ const userSchema = new Schema(
       required: true,
       default: false
     },
-    post:[ 
+    posts:[
       {
         type: Schema.Types.ObjectId,
         ref: 'Post'
@@ -35,7 +33,7 @@ const userSchema = new Schema(
     ],
   },
   {
-    toJSON: {
+    toJson: {
       virtuals: true
     }
   }
@@ -55,6 +53,7 @@ userSchema.pre('save', async function(next) {
 userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
+
 
 const User = model('User', userSchema);
 

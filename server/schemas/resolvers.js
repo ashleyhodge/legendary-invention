@@ -65,9 +65,9 @@ const resolvers = {
       const token = signToken(user)
       return { user, token };
     },
-    // create a new post
+    // create a new post ... how do you make this only available to admin??
     addPost: async (parent, args, context) => {
-      if(context.user.admin === true) {
+      if(context.user) {
         const post = await Post.create({ ...args, username: context.user.username });
 
         await User.findByIdAndUpdate(
@@ -79,7 +79,21 @@ const resolvers = {
         return post;
       }
 
-      throw new AuthenticationError('You are not logged in')
+      throw new AuthenticationError('You are not logged in');
+    },
+    // add comment to blog post
+    addComment: async (parent, { postId, commentText }, context) => {
+      if (context.user) {
+        const updatedPost = await Post.findOneAndUpdate(
+          { _id: postId },
+          { $push: { comments: { commentText, username: context.user.username } } },
+          { new: true, runValidators: true }
+        );
+
+        return updatedPost;
+      }
+
+      throw new AuthenticationError('You are not logged in');
     }
   }
 };

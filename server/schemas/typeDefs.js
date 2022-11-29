@@ -1,3 +1,4 @@
+
 // import the gql tagged template function
 const { gql } = require('apollo-server-express');
 
@@ -10,7 +11,6 @@ const typeDefs = gql`
     posts: [Post]
     isAdmin: Boolean
   }
-
   type Post {
     _id: ID
     postTitle: String
@@ -20,19 +20,16 @@ const typeDefs = gql`
     commentCount: Int
     comments: [Comment]
   }
-
   type Comment {
     _id: ID
     commentText: String
     createdAt: String
     username: String
   }
-
   type Auth {
     token: ID!
     user: User
   }
-
   type Query {
     me: User
     users: [User]
@@ -40,7 +37,6 @@ const typeDefs = gql`
     posts(username: String): [Post]
     post(_id: ID!): Post
   }
-
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!, isAdmin: Boolean): Auth

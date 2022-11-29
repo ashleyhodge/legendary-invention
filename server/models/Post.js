@@ -1,6 +1,6 @@
-const { Schema, model } = require("mongoose");
-const dateFormat = require('../utils/dateFormat');
+const { Schema, model } = require('mongoose');
 const commentSchema = require('./Comment');
+const dateFormat = require('../utils/dateFormat');
 
 const postSchema = new Schema(
   {
@@ -13,7 +13,7 @@ const postSchema = new Schema(
     postText: {
       type: String,
       required: true,
-      minlength: 10,
+      maxlength: 500
     },
     createdAt: {
       type: Date,
@@ -27,14 +27,13 @@ const postSchema = new Schema(
     comments: [commentSchema]
   },
   {
-    toJSON: {
+    toJson: {
       getters: true,
       virtuals: true
     }
   }
 );
 
-// show the amount of comments on a post
 postSchema.virtual('commentCount').get(function() {
   return this.comments.length;
 });
