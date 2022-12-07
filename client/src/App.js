@@ -1,11 +1,24 @@
-
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import './App.css';
+
+import Navbar from './components/Navbar';
+
+const httpLink = createHttpLink({
+  uri: 'http://localhost:3001/graphql',
+});
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache()
+})
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <ApolloProvider client={client}>
+      <div>
+        <Navbar />
+      </div>
+    </ApolloProvider>
   );
 }
 
