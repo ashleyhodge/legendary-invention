@@ -3,48 +3,45 @@ import { AiOutlineMenu } from "react-icons/ai"
 import logo from "../../assets/images/gingerly_knits_logo.png"
 import topNav from '../../assets/images/mobile_nav_1.png'
 import bottomNav from '../../assets/images/mobile_nav_2.png'
+import emptyCart from '../../assets/images/empty_cart.png'
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
   return (
     <header>
       <nav>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center m-2 sm:mx-6">
           {/* Logo */}
-          <div className="m-3">
+          <div className="m-3 hidden sm:flex">
             <img 
-              className="hidden sm:flex h-[130px] w-auto sm:h-[180px]"
+              className="h-[130px] w-auto sm:h-[180px]"
               src={logo}
               alt="Logo"
             />
           </div>
-          
-            {/* Desktop Navbar */}
-            <div className="hidden sm:flex">
-              <ul className="flex">
-                <li>
-                  Home
-                </li>
-                <li>
-                  Shop
-                </li>
-                <li>
-                  Blog
-                </li>
-                <li>
-                  Make
-                </li>
-                <li>
-                  Contact
-                </li>
-              </ul>
-            </div>
-          {/* Login and cart elements */}
-          <div>
-
+          {/* Desktop Navbar */}
+          <div className="hidden sm:flex">
+            <ul className="flex">
+              <li className="mr-4">
+                Home
+              </li>
+              <li className="mr-4">
+                Shop
+              </li>
+              <li className="mr-4">
+                Blog
+              </li>
+              <li className="mr-4">
+                Make
+              </li>
+              <li>
+                Contact
+              </li>
+            </ul>
           </div>
-        </div>
-      </nav>
+          
+        
+      
       {/* Mobile Navbar */}
       <div>
         {showNav ? (
@@ -95,6 +92,22 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
+{/* Login and cart elements */}
+          <div className="flex items-center">
+            <div>
+              <img 
+                src={emptyCart}
+                alt="empty cart"
+                className='w-[30px]'
+              />
+            </div>
+            <div className="m-4">
+              Login
+            </div>
+          </div>
+
+      </div>
+      </nav>
     </header>
   )
 }
