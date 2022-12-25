@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'bad-script': ['"Bad Script"', 'cursive'],
+      }
+    },
   },
   plugins: [],
 }

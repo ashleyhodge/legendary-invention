@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <header>
       <nav>
-        <div className="flex justify-between items-center m-2 sm:mx-6">
+        <div className="flex justify-between items-center m-2 font-bad-script sm:mx-6">
           {/* Logo */}
           <div className="m-3 hidden sm:flex">
             <img 
