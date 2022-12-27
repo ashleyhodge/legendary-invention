@@ -40,57 +40,57 @@ const Navbar = () => {
             </ul>
           </div>
       {/* Mobile Navbar */}
-      <div>
-        {showNav ? (
-          <AiOutlineMenu
-            onClick={() => setShowNav(!showNav)}
-            className="sm:hidden w-7 h-7 m-3"
-          />
-          ) : (
-          <AiOutlineMenu
-            onClick={() => setShowNav(!showNav)}
-            className="sm:hidden w-7 h-7 m-3"
-          />
-        )}
-        <div className="text-[20px] text-[#412117] ">
-          <ul className={
-            (showNav ? "left-0" : "-left-full") +
-            " absolute transition-all duration-[1.0s] ease-in-out w-full h-full sm:hidden"
-          }>
-            <li className="flex justify-center">
-            <img 
-              src={topNav}
-              alt="knit supplies"
-              // cut supplies picture in canva to remove white space
-              className="h-[220px] w-[240px]"
+          <div>
+            {showNav ? (
+              <AiOutlineMenu
+                onClick={() => setShowNav(!showNav)}
+                className="sm:hidden w-7 h-7 m-3"
               />
-            </li>
-            <li className="flex justify-center p-2 hover:text-[#C3706B]">
-              Home
-            </li>
-            <li className="flex justify-center p-2 hover:text-[#C3706B]">
-              Shop
-            </li>
-            <li className="flex justify-center p-2 hover:text-[#C3706B]">
-              Blog
-            </li>
-            <li className="flex justify-center p-2 hover:text-[#C3706B]">
-              Make
-            </li>
-            <li className="flex justify-center p-2 hover:text-[#C3706B]">
-              Contact
-            </li>
-            <li className="flex justify-center">
-            <img 
-              src={bottomNav}
-              alt="knit supplies"
-              className="h-[220px] w-[240px] flex items-center"
+              ) : (
+              <AiOutlineMenu
+                onClick={() => setShowNav(!showNav)}
+                className="sm:hidden w-7 h-7 m-3"
               />
-            </li>
-          </ul>
-        </div>
-      </div>
-{/* Login and cart elements */}
+            )}
+            <div className="text-[20px] text-[#412117] ">
+              <ul className={
+                (showNav ? "left-0" : "-left-full") +
+                " absolute transition-all duration-[1.0s] ease-in-out w-full h-full sm:hidden"
+              }>
+                <li className="flex justify-center">
+                <img 
+                  src={topNav}
+                  alt="knit supplies"
+                  // cut supplies picture in canva to remove white space
+                  className="h-[220px] w-[240px]"
+                  />
+                </li>
+                <li className="flex justify-center p-2 hover:text-[#C3706B]">
+                  Home
+                </li>
+                <li className="flex justify-center p-2 hover:text-[#C3706B]">
+                  Shop
+                </li>
+                <li className="flex justify-center p-2 hover:text-[#C3706B]">
+                  Blog
+                </li>
+                <li className="flex justify-center p-2 hover:text-[#C3706B]">
+                  Make
+                </li>
+                <li className="flex justify-center p-2 hover:text-[#C3706B]">
+                  Contact
+                </li>
+                <li className="flex justify-center">
+                <img 
+                  src={bottomNav}
+                  alt="knit supplies"
+                  className="h-[220px] w-[240px] flex items-center"
+                  />
+                </li>
+              </ul>
+            </div>
+          </div>
+      {/* Login and cart elements */}
           <div className="flex items-center">
             <div>
               <img 
