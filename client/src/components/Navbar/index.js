@@ -21,27 +21,24 @@ const Navbar = () => {
           </div>
           {/* Desktop Navbar */}
           <div className="hidden sm:flex">
-            <ul className="flex">
-              <li className="mr-4">
+            <ul className="flex text-[18px] font-black text-[#412117]">
+              <li className="mr-4 hover:text-[#C3706B] cursor-pointer">
                 Home
               </li>
-              <li className="mr-4">
+              <li className="mr-4 hover:text-[#C3706B] cursor-pointer">
                 Shop
               </li>
-              <li className="mr-4">
+              <li className="mr-4 hover:text-[#C3706B] cursor-pointer">
                 Blog
               </li>
-              <li className="mr-4">
+              <li className="mr-4 hover:text-[#C3706B] cursor-pointer">
                 Make
               </li>
-              <li>
+              <li className="hover:text-[#C3706B] cursor-pointer">
                 Contact
               </li>
             </ul>
           </div>
-          
-        
-      
       {/* Mobile Navbar */}
       <div>
         {showNav ? (
@@ -55,31 +52,32 @@ const Navbar = () => {
             className="sm:hidden w-7 h-7 m-3"
           />
         )}
-        <div className="">
+        <div className="text-[20px] text-[#412117] ">
           <ul className={
             (showNav ? "left-0" : "-left-full") +
-            " absolute transition-all duration-[1.0s] ease-in-out w-full h-full"
+            " absolute transition-all duration-[1.0s] ease-in-out w-full h-full sm:hidden"
           }>
             <li className="flex justify-center">
             <img 
               src={topNav}
               alt="knit supplies"
+              // cut supplies picture in canva to remove white space
               className="h-[220px] w-[240px]"
               />
             </li>
-            <li className="flex justify-center">
+            <li className="flex justify-center p-2 hover:text-[#C3706B]">
               Home
             </li>
-            <li className="flex justify-center">
+            <li className="flex justify-center p-2 hover:text-[#C3706B]">
               Shop
             </li>
-            <li className="flex justify-center">
+            <li className="flex justify-center p-2 hover:text-[#C3706B]">
               Blog
             </li>
-            <li className="flex justify-center">
+            <li className="flex justify-center p-2 hover:text-[#C3706B]">
               Make
             </li>
-            <li className="flex justify-center">
+            <li className="flex justify-center p-2 hover:text-[#C3706B]">
               Contact
             </li>
             <li className="flex justify-center">
@@ -101,12 +99,11 @@ const Navbar = () => {
                 className='w-[30px]'
               />
             </div>
-            <div className="m-4">
+            <div className="m-4 text-[20px] sm:text-[18px] font-black text-[#412117] hover:text-[#C3706B]">
               Login
             </div>
           </div>
-
-      </div>
+        </div>
       </nav>
     </header>
   )
