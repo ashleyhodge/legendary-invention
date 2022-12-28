@@ -11,7 +11,7 @@ const Navbar = () => {
     <header>
       <nav>
         <div className="flex justify-between items-center m-2 font-bad-script sm:mx-6">
-          {/* Logo */}
+          {/* Desktop Logo */}
           <div className="m-3 hidden sm:flex">
             <img 
               className="h-[130px] w-auto sm:h-[180px]"
@@ -55,7 +55,7 @@ const Navbar = () => {
             <div className="text-[20px] text-[#412117]">
               <ul className={
                 (showNav ? "left-0" : "-left-full") +
-                " absolute transition-all duration-[1.0s] ease-in-out w-full h-full z-20 bg-white sm:hidden"
+                " absolute transition-all duration-[1.0s] ease-in-out w-full h-full z-10 bg-white sm:hidden"
               }>
                 <li className="flex justify-center">
                 <img 
