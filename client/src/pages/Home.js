@@ -4,6 +4,7 @@ import HeroCarousel from "../components/Carousel";
 const Home = () => {
   return (
     <main>
+      {/* Hero */}
       <div>
         <HeroCarousel />
       </div>

@@ -52,10 +52,10 @@ const Navbar = () => {
                 className="sm:hidden w-7 h-7 m-3"
               />
             )}
-            <div className="text-[20px] text-[#412117] ">
+            <div className="text-[20px] text-[#412117]">
               <ul className={
                 (showNav ? "left-0" : "-left-full") +
-                " absolute transition-all duration-[1.0s] ease-in-out w-full h-full sm:hidden"
+                " absolute transition-all duration-[1.0s] ease-in-out w-full h-full z-20 bg-white sm:hidden"
               }>
                 <li className="flex justify-center">
                 <img 
