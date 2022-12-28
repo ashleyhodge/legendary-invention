@@ -31,7 +31,7 @@ const HeroCarousel = () => {
           play={true}
           interval={5000}
         >
-          <div data-src={Shop}  />
+          <div data-src={Shop} />
           <div data-src={Make} />
           <div data-src={Blog} />
         </AutoplaySlider>

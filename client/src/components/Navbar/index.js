@@ -26,10 +26,10 @@ const Navbar = () => {
                 Home
               </li>
               <li className="mr-4 hover:text-[#C3706B] cursor-pointer">
-                Shop
+                Blog
               </li>
               <li className="mr-4 hover:text-[#C3706B] cursor-pointer">
-                Blog
+                Shop
               </li>
               <li className="mr-4 hover:text-[#C3706B] cursor-pointer">
                 Make

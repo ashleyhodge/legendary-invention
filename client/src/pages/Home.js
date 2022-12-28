@@ -1,6 +1,7 @@
 import React from "react";
 import HeroCarousel from "../components/Carousel";
 import logo from "../assets/images/gingerly_knits_logo.png"
+import VideoPlayer from "../components/VideoPlayer";
 
 const Home = () => {
   return (
@@ -16,6 +17,9 @@ const Home = () => {
       {/* Hero */}
       <div>
         <HeroCarousel />
+      </div>
+      <div>
+        <VideoPlayer />
       </div>
     </main>
   )
