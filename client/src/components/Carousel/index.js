@@ -20,7 +20,7 @@ const HeroCarousel = () => {
 
   return (
     <div>
-      <div className='hidden sm:inline'>
+      <div className='hidden sm:inline z-0'>
         <Carousel slides={slides} autoplay={true} interval={10000} arrows={false}/>
       </div>
       <div className='sm:hidden z-0'>
