@@ -21,15 +21,15 @@ const HeroCarousel = () => {
   return (
     <div>
       <div className='hidden sm:inline'>
-        <Carousel slides={slides} autoplay={true} interval={5000} arrows={false}/>
+        <Carousel slides={slides} autoplay={true} interval={10000} arrows={false}/>
       </div>
       <div className='sm:hidden z-0'>
         <AutoplaySlider
           bullets={false}
-          organicArrows={true}
+          organicArrows={false}
           infinite={true}
           play={true}
-          interval={5000}
+          interval={10000}
         >
           <div data-src={Shop} />
           <div data-src={Make} />
