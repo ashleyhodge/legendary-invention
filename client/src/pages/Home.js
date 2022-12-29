@@ -21,7 +21,7 @@ const Home = () => {
       </div>
       {/* Video Tutorials */}
       <div className="mt-[50px] sm:mt-[100px] font-bad-script font-black text-center">
-        <h2 className="text-[25px] sm:text-[32px] text-[#412117]">
+        <h2 className="text-[25px] sm:text-[28px] text-[#412117]">
           Favorite Video Tutorials
         </h2>
         <p className="mx-[20px] mt-[10px] sm:text-[24px] sm:mx-[200px] text-[#8e4a45]">

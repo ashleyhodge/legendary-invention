@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <header>
       <nav>
-        <div className="flex justify-between lg:justify-evenly items-center m-2 font-bad-script sm:mx-6">
+        <div className="flex justify-between text-[20px] lg:justify-evenly items-center m-2 font-bad-script sm:mx-6">
           {/* Desktop Logo */}
           <div className="m-3 hidden sm:flex">
             <img 
@@ -21,7 +21,7 @@ const Navbar = () => {
           </div>
           {/* Desktop Navbar */}
           <div className="hidden sm:flex">
-            <ul className="flex text-[18px] font-black text-[#412117]">
+            <ul className="flex font-black text-[#412117]">
               <li className="mx-4 hover:text-[#C3706B] cursor-pointer">
                 Home
               </li>
@@ -99,7 +99,7 @@ const Navbar = () => {
                 className='w-[30px]'
               />
             </div>
-            <div className="m-4 text-[20px] sm:text-[18px] font-black text-[#412117] hover:text-[#C3706B]">
+            <div className="m-4 font-black text-[#412117] hover:text-[#C3706B]">
               Login
             </div>
           </div>
