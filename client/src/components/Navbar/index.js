@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import { AiOutlineMenu } from "react-icons/ai"
 import { FaTiktok, FaPatreon } from "react-icons/fa"
 import { BsFacebook, BsInstagram, BsYoutube} from "react-icons/bs"
@@ -14,34 +15,46 @@ const Navbar = () => {
       <nav>
         <div className="flex justify-between text-[20px] lg:justify-evenly items-center m-2 font-bad-script sm:mx-6">
           {/* Desktop Logo */}
-          <div className="m-3 hidden sm:flex">
-            <img 
-              className="h-[130px] w-auto sm:h-[180px]"
-              src={logo}
-              alt="Logo"
-            />
-          </div>
+          <Link to='/'>
+            <div className="m-3 hidden sm:flex">
+              <img 
+                className="h-[130px] w-auto sm:h-[180px]"
+                src={logo}
+                alt="Logo"
+              />
+            </div>
+          </Link>
           {/* Desktop Navbar */}
           <div className="hidden sm:flex">
             <ul className="flex font-black text-[#412117]">
-              <li className="mx-4 hover:text-[#C3706B] cursor-pointer">
-                Home
+              <li className="mx-4  hover:text-[#C3706B] cursor-pointer">
+                <Link to='/'>
+                  Home
+                </Link>
               </li>
               <li className="mx-4 hover:text-[#C3706B] cursor-pointer">
-                Blog
+                <Link to='/blog'>
+                  Blog
+                </Link>
               </li>
               <li className="mx-4 hover:text-[#C3706B] cursor-pointer">
-                Shop
+                <Link to='/shop'>
+                  Shop
+                </Link>
               </li>
               <li className="mx-4 hover:text-[#C3706B] cursor-pointer">
-                Make
+                <Link to='/make'>
+                  Make
+                </Link>
               </li>
               <li className=" mx-4 hover:text-[#C3706B] cursor-pointer">
-                Contact
+                <Link to='/contact'>
+                  Contact
+                </Link>
               </li>
             </ul>
           </div>
-      {/* Mobile Navbar */}
+          {/* Mobile Navbar */}
           <div>
             {showNav ? (
               <AiOutlineMenu
@@ -109,11 +122,11 @@ const Navbar = () => {
       </nav>
       {/* Social icons */}
       <ul className="hidden sm:fixed sm:block text-[#CB9B92] top-[40%] sm:left-0 text-[20px] sm:text-[30px] z-10">
-        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[30px]'><a href="#" ><BsFacebook/></a></li>
-        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[30px]'><a href="#"><BsInstagram/></a></li>
-        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[30px]'><a href="#"><FaTiktok/></a></li>
-        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[30px]'><a href="#"><BsYoutube/></a></li>
-        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[30px]'><a href="#"><FaPatreon /></a></li>
+        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[20px]'><a href="#" ><BsFacebook/></a></li>
+        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[20px]'><a href="#"><BsInstagram/></a></li>
+        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[20px]'><a href="#"><FaTiktok/></a></li>
+        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[20px]'><a href="#"><BsYoutube/></a></li>
+        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[20px]'><a href="#"><FaPatreon /></a></li>
       </ul>
     </header>
   )
