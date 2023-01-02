@@ -107,12 +107,13 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <ul className="hidden sm:fixed sm:block text-[#6D374E] top-[40%] sm:left-0 text-[20px] sm:text-[30px] z-10">
-        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[30px] opacity-[60%] hover:opacity-[100%]'><a href="#" ><BsFacebook/></a></li>
-        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[30px] opacity-[60%] hover:opacity-[100%]'><a href="#"><BsInstagram/></a></li>
-        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[30px] opacity-[60%] hover:opacity-[100%]'><a href="#"><FaTiktok/></a></li>
-        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[30px] opacity-[60%] hover:opacity-[100%]'><a href="#"><BsYoutube/></a></li>
-        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[30px] opacity-[60%] hover:opacity-[100%]'><a href="#"><FaPatreon /></a></li>
+      {/* Social icons */}
+      <ul className="hidden sm:fixed sm:block text-[#CB9B92] top-[40%] sm:left-0 text-[20px] sm:text-[30px] z-10">
+        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[30px]'><a href="#" ><BsFacebook/></a></li>
+        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[30px]'><a href="#"><BsInstagram/></a></li>
+        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[30px]'><a href="#"><FaTiktok/></a></li>
+        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[30px]'><a href="#"><BsYoutube/></a></li>
+        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[30px]'><a href="#"><FaPatreon /></a></li>
       </ul>
     </header>
   )
