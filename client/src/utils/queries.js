@@ -4,12 +4,12 @@ export const QUERY_POSTS = gql`
   query posts($username: String) {
     posts(username: $username) {
       _id
-      image
       postTitle
       postText
       createdAt
       username
       commentCount
+      postImage
       comments {
         _id
         createdAt

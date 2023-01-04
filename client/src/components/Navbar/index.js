@@ -48,7 +48,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className=" mx-4 hover:text-[#C3706B] cursor-pointer">
-                <Link to='/contact'>
+                <Link to='/'>
                   Contact
                 </Link>
               </li>

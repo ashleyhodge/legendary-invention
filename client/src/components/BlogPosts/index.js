@@ -1,23 +1,25 @@
+import Masonry from 'react-masonry-css';
 
-
-const BlogPosts = ({ posts, title }) => {
+const BlogPosts = ({ posts }) => {
   if(!posts.length) {
     return (
       <h3>No posts yet!</h3>
     )
   }
+  
+  posts = posts.map(function(post) {
+    return <div key={post._id} >
+      <img alt='post' src={`../src/assets/images/${post.postImage}.png`}/>
+      {post.postTitle}
+    </div>
+  })
 
   return (
-    <div>
-      {posts &&
-        posts.map(post => (
-          <div key={post._id}>
-              <h1 className="bg-blue-100">
-                {post.postTitle}
-              </h1>
-          </div>
-        ))}
-    </div>
+    <Masonry breakpointCols={4}
+    className="my-masonry-grid"
+    columnClassName="my-masonry-grid_column">
+      {posts}
+    </Masonry>
   )
 }
 

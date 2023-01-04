@@ -24,6 +24,9 @@ const postSchema = new Schema(
       type: String,
       required: true
     },
+    postImage: {
+      type: String
+    },
     comments: [commentSchema]
   },
   {

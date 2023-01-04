@@ -13,15 +13,13 @@ const Blog = () => {
 
   return (
     <main>
-      <div>
-        <div>
-          {loading ? (
-            <div>Loading...</div>
-          ):(
-            <BlogPosts posts={posts} />
-          )}
+      {loading ? (
+        <div>Loading...</div>
+      ):(
+        <div >
+          <BlogPosts posts={posts} />
         </div>
-      </div>
+      )}
     </main>
   )
 }
