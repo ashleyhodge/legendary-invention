@@ -10,7 +10,7 @@ const BlogPosts = ({ posts }) => {
   
   posts = posts.map(function(post) {
     return <div key={post._id} >
-      <img alt='post' className='pt-[30px] sm:pt-0' src={require(`../../assets/images/${post.postImage}`)}/>
+      <img alt='post' className='sm:rounded pt-[30px] sm:pt-0' src={require(`../../assets/images/${post.postImage}`)}/>
     </div>
   })
 
