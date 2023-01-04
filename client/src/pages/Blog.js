@@ -13,6 +13,7 @@ const Blog = () => {
 
   return (
     <main>
+      <h1 className="text-center font-bad-script font-black text-[36px] text-[#415C6B]">Articles</h1>
       {loading ? (
         <div>Loading...</div>
       ):(
@@ -20,6 +21,11 @@ const Blog = () => {
           <BlogPosts posts={posts} />
         </div>
       )}
+      <div className="text-center font-bad-script">
+        <h2 className="text-[26px] mb-[30px] text-[#412117]">What else would you like to hear about?</h2>
+        <p className="text-[20px] mx-[200px] text-[#415C6B]">While I love talking about my favorite topics, I’d love to write about things that interest my audience (you) as well. Leave a comment below any post or contact me directly!</p>
+      </div>
+      
     </main>
   )
 }
