@@ -15,7 +15,7 @@ const Navbar = () => {
       <nav>
         <div className="flex justify-between text-[20px] lg:justify-evenly items-center m-2 font-bad-script sm:mx-6">
           {/* Desktop Logo */}
-          <Link to='/'>
+          <Link className="hidden sm:block" to='/'>
             <div className="m-3 hidden sm:flex">
               <img 
                 className="h-[130px] w-auto sm:h-[180px]"
@@ -26,6 +26,7 @@ const Navbar = () => {
           </Link>
           {/* Desktop Navbar */}
           <div className="hidden sm:flex">
+            
             <ul className="flex font-black text-[#412117]">
               <li className="mx-4  hover:text-[#C3706B] cursor-pointer">
                 <Link to='/'>
