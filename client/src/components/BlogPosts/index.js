@@ -1,4 +1,5 @@
 import Masonry from 'react-masonry-css';
+import { Link } from 'react-router-dom'
 
 // All blog posts
 const BlogPosts = ({ posts }) => {
@@ -9,9 +10,15 @@ const BlogPosts = ({ posts }) => {
   }
   
   posts = posts.map(function(post) {
-    return <div key={post._id} >
-      <img alt='post' className='sm:rounded pt-[30px] sm:pt-0' src={require(`../../assets/images/${post.postImage}`)}/>
-    </div>
+    return (
+      <Link to={`/blog/${post.postTitle}`}>
+        <div key={post._id} >
+          <img alt='post' className='sm:rounded pt-[30px] sm:pt-0' src={require(`../../assets/images/${post.postImage}`)}/>
+        </div>
+      </Link>
+      
+    )
+    
   })
 
   return (
@@ -22,9 +29,9 @@ const BlogPosts = ({ posts }) => {
       columnClassName="my-masonry-grid_column">
         {posts}
       </Masonry>
-      <div className='flex flex-col items-center mt-5 pt-5 sm:hidden'>
-        {posts}
-      </div>
+        <div className='flex flex-col items-center mt-5 pt-5 sm:hidden'>
+          {posts}
+        </div>
     </div>
 
   )

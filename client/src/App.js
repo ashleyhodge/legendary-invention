@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Blog from './pages/Blog';
+import SingleBlogPost from './pages/SingleBlogPost';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -28,10 +29,11 @@ function App() {
                 path='/'
                 element={<Home />}
               />
-              <Route 
-                path='/blog'
-                element={<Blog />}
-              />
+              <Route path='/blog'> 
+                <Route path=':postTitle' element={<SingleBlogPost />} />
+                <Route path='' element={<Blog />} />
+              </Route>
+
             </Routes>
             <Footer />
           </main>

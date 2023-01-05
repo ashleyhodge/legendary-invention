@@ -17,7 +17,7 @@ const Blog = () => {
       {loading ? (
         <div>Loading...</div>
       ):(
-        <div >
+        <div>
           <BlogPosts posts={posts} />
         </div>
       )}
