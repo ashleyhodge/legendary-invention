@@ -1,6 +1,6 @@
-
 import Masonry from 'react-masonry-css';
 
+// All blog posts
 const BlogPosts = ({ posts }) => {
   if(!posts.length) {
     return (
