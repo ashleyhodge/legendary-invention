@@ -8,7 +8,7 @@ const postSchema = new Schema(
       type: String,
       required: true,
       minlength: 4,
-      maxlength: 30
+      maxlength: 100
     },
     postText: {
       type: String,

@@ -18,7 +18,7 @@ const data = {
   ],
 	posts: [
 		{
-			postTitle: "Mollit ullamco.",
+			postTitle: "Knitting: What you need to know as a beginnner",
 			postText : "Consequat incididunt enim ut consequat adipisicing exercitation amet duis incididunt. Aliquip commodo cillum eiusmod qui. Aliquip nostrud ad aliqua do. Nulla ex commodo qui sunt eiusmod quis. Elit irure mollit ut Lorem id magna enim excepteur fugiat. Adipisicing nisi occaecat enim duis irure amet aliqua laborum non occaecat magna culpa. Sunt tempor enim magna cupidatat Lorem.", 
 			username : "John", 
 			postImage: "post_bg_2.png",
