@@ -11,14 +11,12 @@ const BlogPosts = ({ posts }) => {
   
   posts = posts.map(function(post) {
     return (
-      <Link to={`/blog/${post.postTitle}`}>
+      <Link to={`/blog/${post.postTitle}/${post._id}`}>
         <div key={post._id} >
           <img alt='post' className='sm:rounded pt-[30px] sm:pt-0' src={require(`../../assets/images/${post.postImage}`)}/>
         </div>
       </Link>
-      
     )
-    
   })
 
   return (

@@ -30,10 +30,9 @@ function App() {
                 element={<Home />}
               />
               <Route path='/blog'> 
-                <Route path=':postTitle' element={<SingleBlogPost />} />
+                <Route path=':postTitle/:id' element={<SingleBlogPost />} />
                 <Route path='' element={<Blog />} />
               </Route>
-
             </Routes>
             <Footer />
           </main>
