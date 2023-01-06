@@ -38,8 +38,8 @@ const SingleBlogPost = () => {
             <h2 className='p-[30px] text-center font-bad-script font-black'>
               My Recommendations
             </h2>
+            {/* recommendation links */}
           </div>
-
         </div>
       </div>
     </div>

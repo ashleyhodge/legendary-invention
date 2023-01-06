@@ -20,9 +20,11 @@ const HeroCarousel = () => {
 
   return (
     <div>
+      {/* Desktop View */}
       <div className='hidden sm:inline z-0'>
         <Carousel slides={slides} autoplay={true} interval={10000} arrows={false}/>
       </div>
+      {/* Mobile View */}
       <div className='sm:hidden z-0'>
         <AutoplaySlider
           bullets={false}
