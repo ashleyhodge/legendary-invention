@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_POST } from '../utils/queries';
+import Comments from '../components/Comments';
 
 const SingleBlogPost = () => {
 
@@ -66,6 +67,7 @@ const SingleBlogPost = () => {
           </p>
         </div>
         {/* Comment Form & list */}
+        <Comments />
       </div>
     </div>
   )
