@@ -67,7 +67,7 @@ const SingleBlogPost = () => {
           </p>
         </div>
         {/* Comment Form & list */}
-        <Comments />
+        <Comments comments={post.comments} />
       </div>
     </div>
   )

@@ -26,6 +26,10 @@ const data = {
 					{
 							commentText : "non exercitationem consequatur temporibus quia dicta id earum molestias voluptatibus et ut quia officiis dignissimos ex maxime sit voluptatem", 
 							username : "Jane"
+					},
+					{
+						commentText : "non exercitationem consequatur temporibus quia dicta id earum molestias voluptatibus et ut quia officiis dignissimos ex maxime sit voluptatem", 
+						username : "Jane"
 					} 
 			] 
 	},

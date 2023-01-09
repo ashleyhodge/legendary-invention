@@ -1,16 +1,19 @@
 import { AiOutlineLike, AiOutlineDislike } from 'react-icons/ai';
 
-const Comments = ({ posts }) => {
+const Comments = ({ comments }) => {
   return (
     <div>
-      <div className="border border-[4px] border-[#A3C0CD] mx-[70px] mt-[20px] p-[15px]">
+      {comments && comments.map(comment => (
+      <div className="border border-[4px] border-[#A3C0CD] mx-[70px] mt-[20px] p-[15px] font-bad-script">
         <div className="flex justify-between">
           <div>
             {/* profile image */}
-            <h2>
-              username
+            <h2 className='text-[20px]'>
+              {comment.username}
             </h2>
-            <p>date</p>
+            <p className='opacity-[70%]'>
+              {comment.createdAt}
+            </p>
           </div>
           <div className='flex items-center'>
             <AiOutlineLike />
@@ -19,13 +22,14 @@ const Comments = ({ posts }) => {
           </div>
         </div>
         <div className='mt-[15px]'>
-          <p>CommentText</p>
+          <p className='font-black'>{comment.commentText}</p>
         </div>
         <div className='text-end'>
           <p>View Replies</p>
         </div>
       </div>
-      <p className='text-end mx-[70px]'>See all</p>
+      ))}
+      <p className='text-end text-[20px] mt-2 mx-[75px] font-bad-script'>See all</p>
     </div>
   )
 }
