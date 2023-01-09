@@ -28,14 +28,14 @@ const SingleBlogPost = () => {
           Published on {post.createdAt} by {post.username}
         </p>
       </div>
-      <div className='m-[50px] flex '>
+      <div className='mx-[50px] sm:flex '>
         {/* Post introduction */}
-        <div className='w-3/4'>
+        <div className='sm:w-3/4 text-center sm:text-start'>
           <p>
             {post.postText}
           </p>
         </div>
-        <div className='ml-[50px] w-1/2 '>
+        <div className='sm:ml-[50px] sm:w-1/2 mt-[30px]'>
           <div className='border-[3px] border-[#A3C0CD]'>
             <h2 className='p-[30px] text-center font-bad-script font-black'>
               My Recommendations
@@ -43,26 +43,34 @@ const SingleBlogPost = () => {
             {/* recommendation links */}
           </div>
         </div>
-        <div>
-          {/* post image 1 */}
         </div>
-        <div>
-          {/* post main text 1 */}
-        </div>
-        <div>
-          {/* post image 2 */}
-        </div>
-        <div>
-          {/* post main text 2 */}
-        </div>
+        <div className='text-center sm:text-start'>
+          <div>
+            {/* post image 1 */}
+            images
+          </div>
+          <div>
+            {/* post main text 1 */}
+            text
+          </div>
+          <div>
+            {/* post image 2 */}
+            image
+          </div>
+          <div>
+            {/* post main text 2 */}
+            text
+          </div>
+        
+        
       </div>
       {/* Comment Section */}
       <div>
         <div className='text-center font-black font-bad-script'>
-          <h1 className='text-center font-black font-bad-script text-[30px] text-[#412117]'>
+          <h1 className='text-[30px] text-[#412117]'>
           Comments
           </h1>
-          <p className='text-[#8E4A45] mx-[30%]'>
+          <p className='text-[#8E4A45] mx-[20%]'>
             Let me know what you think! Please keep all comments respectful!
           </p>
         </div>
