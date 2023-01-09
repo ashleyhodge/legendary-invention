@@ -28,6 +28,7 @@ const SingleBlogPost = () => {
         </p>
       </div>
       <div className='m-[50px] flex '>
+        {/* Post introduction */}
         <div className='w-3/4'>
           <p>
             {post.postText}
@@ -41,6 +42,30 @@ const SingleBlogPost = () => {
             {/* recommendation links */}
           </div>
         </div>
+        <div>
+          {/* post image 1 */}
+        </div>
+        <div>
+          {/* post main text 1 */}
+        </div>
+        <div>
+          {/* post image 2 */}
+        </div>
+        <div>
+          {/* post main text 2 */}
+        </div>
+      </div>
+      {/* Comment Section */}
+      <div>
+        <div className='text-center font-black font-bad-script'>
+          <h1 className='text-center font-black font-bad-script text-[30px] text-[#412117]'>
+          Comments
+          </h1>
+          <p className='text-[#8E4A45] mx-[30%]'>
+            Let me know what you think! Please keep all comments respectful!
+          </p>
+        </div>
+        {/* Comment Form & list */}
       </div>
     </div>
   )
