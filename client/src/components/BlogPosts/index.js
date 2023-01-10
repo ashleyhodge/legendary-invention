@@ -15,7 +15,7 @@ const BlogPosts = ({ posts }) => {
       // Link images to /blog/postTitle/id
       <Link to={`/blog/${post.postTitle}/${post._id}`}>
         <div key={post._id} >
-          <img alt='post' className='sm:rounded pt-[30px] sm:pt-0' src={require(`../../assets/images/${post.postImage}`)}/>
+          <img alt='post' className='mt-[30px] rounded-md' src={require(`../../assets/images/${post.postImage}`)}/>
         </div>
       </Link>
     )

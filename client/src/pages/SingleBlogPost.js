@@ -28,14 +28,14 @@ const SingleBlogPost = () => {
           Published on {post.createdAt} by {post.username}
         </p>
       </div>
-      <div className='mx-[50px] sm:flex '>
+      <div className='mx-[50px] mt-[50px] sm:flex '>
         {/* Post introduction */}
         <div className='sm:w-3/4 text-center sm:text-start'>
           <p>
             {post.postText}
           </p>
         </div>
-        <div className='sm:ml-[50px] sm:w-1/2 mt-[30px]'>
+        <div className='sm:ml-[50px] sm:w-1/2'>
           <div className='border-[3px] border-[#A3C0CD]'>
             <h2 className='p-[30px] text-center font-bad-script font-black'>
               My Recommendations

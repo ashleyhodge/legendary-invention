@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { AiOutlineMenu } from "react-icons/ai"
-import { FaTiktok, FaPatreon } from "react-icons/fa"
+import { FaTiktok, FaPatreon, FaUserAlt } from "react-icons/fa"
 import { BsFacebook, BsInstagram, BsYoutube} from "react-icons/bs"
 import logo from "../../assets/images/gingerly_knits_logo.png"
 import topNav from '../../assets/images/mobile_nav_1.png'
@@ -108,15 +108,16 @@ const Navbar = () => {
           </div>
       {/* Login and cart elements */}
           <div className="flex items-center">
+            <FaUserAlt className="mr-4 mb-2 opacity-[50%] text-[#415C6B]" />
+            <div className="mr-4 font-black text-[#412117] hover:text-[#C3706B]">
+              Sign up
+            </div>
             <div>
               <img 
                 src={emptyCart}
                 alt="empty cart"
                 className='w-[30px]'
               />
-            </div>
-            <div className="m-4 font-black text-[#412117] hover:text-[#C3706B]">
-              Login
             </div>
           </div>
         </div>
