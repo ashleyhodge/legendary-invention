@@ -108,17 +108,16 @@ const Navbar = () => {
           </div>
       {/* Login and cart elements */}
           <div className="flex items-center">
-            <FaUserAlt className="mr-4 mb-2 opacity-[50%] text-[#415C6B]" />
-            <div className="mr-4 font-black text-[#412117] hover:text-[#C3706B]">
-              Sign up
-            </div>
-            <div>
+            <Link to='/signup'>
+              <FaUserAlt className="mr-4 mb-2 opacity-[50%] text-[#415C6B]" />
+            </Link>
+            <Link to='/cart'>
               <img 
                 src={emptyCart}
                 alt="empty cart"
-                className='w-[30px]'
+                className='w-[30px] mb-3'
               />
-            </div>
+            </Link>
           </div>
         </div>
       </nav>

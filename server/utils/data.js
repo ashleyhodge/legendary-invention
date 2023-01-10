@@ -3,6 +3,8 @@ const data = {
   users: [
     {
       username: 'John',
+			firstName: 'John',
+			lastName: 'Smith',
       email: 'admin@example.com',
       password: '123456',
       isAdmin: true,
@@ -10,6 +12,8 @@ const data = {
     },
     {
       username: 'Jane',
+			firstName: 'Jane',
+			lastName: 'Doe',
       email: 'user@example.com',
       password: '123456',
       isAdmin: false,
