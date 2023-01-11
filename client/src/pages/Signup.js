@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Auth from "../utils/auth";
 
@@ -19,7 +19,8 @@ const Signup = () => {
     });
     
   };
-  const navigate = useNavigate();
+  // navigate to previous page or home
+  // const navigate = useNavigate()
   // submit form
   const handleFormSubmit = async event => {
     event.preventDefault();
@@ -28,19 +29,19 @@ const Signup = () => {
       const { data } = await addUser({
         variables: { ...formState }
       });
-      console.log(data);
+      
+      Auth.login(data.addUser.token);
       
     } catch (e) {
       console.error(e);
     }
-
   };
   return (
     <section>
       <h1 className="text-center text-[36px] font-black font-bad-script text-[#3D5765]">
         Sign up
       </h1>
-      <div className="">
+      <div>
         <form onSubmit={handleFormSubmit} className="my-[20px] border-[3px] border-[#BDCDD6] rounded p-[10px] mx-[20%]">
           <div className='m-6'>
               <div className="flex flex-col sm:flex-row justify-center">
