@@ -40,11 +40,10 @@ const Signup = () => {
       <h1 className="text-center text-[36px] font-black font-bad-script text-[#3D5765]">
         Sign up
       </h1>
-      <div className="border-[3px] border-[#BDCDD6] rounded p-[10px] mx-[20%] my-[20px]">
-        <form onSubmit={handleFormSubmit} className="my-[20px]">
-          <div className="flex justify-center">
-            <div className="w-1/2">
-              <div className="flex">
+      <div className="">
+        <form onSubmit={handleFormSubmit} className="my-[20px] border-[3px] border-[#BDCDD6] rounded p-[10px] mx-[20%]">
+          <div className='m-6'>
+              <div className="flex flex-col sm:flex-row justify-center">
                 <input 
                   id="firstName"
                   name="firstName"
@@ -52,7 +51,7 @@ const Signup = () => {
                   value={formState.firstName}
                   onChange={handleChange}
                   placeholder="First Name"
-                  className="border-2 w-full p-1 m-2 rounded"
+                  className="border-2 p-1 sm:m-2 sm:w-full rounded"
                 />
                 <input
                   id="lastName"
@@ -61,10 +60,10 @@ const Signup = () => {
                   value={formState.lastName}
                   onChange={handleChange}
                   placeholder="Last Name"
-                  className="border-2 w-full p-1 m-2 rounded"
+                  className="border-2 p-1 sm:m-2 mt-2 sm:w-full rounded"
                 />
               </div>
-              <div>
+              <div className='flex flex-col justify-center'>
                 <input 
                   id="username"
                   name="username"
@@ -72,12 +71,8 @@ const Signup = () => {
                   value={formState.username}
                   onChange={handleChange}
                   placeholder="Username"
-                  className="border-2 w-full p-1 m-2 rounded"
+                  className="border-2 p-1 sm:m-2 mt-2 rounded"
                 />
-              </div>
-            </div>
-            <div className="ml-6">
-                <div>
                 <input 
                   id="email"
                   name="email"
@@ -85,10 +80,8 @@ const Signup = () => {
                   value={formState.email}
                   onChange={handleChange}
                   placeholder="Email"
-                  className="border-2 p-1 m-2 rounded"
+                  className="border-2 p-1 sm:m-2 mt-2 rounded"
                 />
-              </div>
-              <div>
                 <input 
                   id="password"
                   name="password"
@@ -96,11 +89,9 @@ const Signup = () => {
                   value={formState.password}
                   onChange={handleChange}
                   placeholder="Password"
-                  className="border-2 p-1 m-2 rounded"
+                  className="border-2 p-1 sm:m-2 mt-2 rounded"
                 />
-              </div>
-              {/* add repeat password for authentication */}
-              <div>
+                {/* add repeat password for authentication */}
                 <input 
                   id="password"
                   name="password"
@@ -108,18 +99,17 @@ const Signup = () => {
                   value={formState.password}
                   onChange={handleChange}
                   placeholder="Repeat Password"
-                  className="border-2 p-1 m-2 rounded"
+                  className="border-2 p-1 sm:m-2 mt-2 rounded"
                 />
               </div>
             </div>
-          </div>
           <div className='flex justify-center mt-[20px]'>
-            <button type='submit' className='bg-[#ACBA73] text-white py-2 px-[39%] rounded'>
-              Submit
+            <button type='submit' className='bg-[#ACBA73] font-black font-bad-script sm:text-[20px] text-white py-2 px-[36%] rounded'>
+              Sign up!
             </button>
           </div>
-          <div className='flex justify-center mt-2'>
-            <p className='pr-2 text-[#415C6B] font-bad-script font-black'>Already registered?</p> 
+          <div className='flex flex-col sm:flex-row justify-center text-center mt-2 sm:text-[20px]'>
+            <p className='sm:pr-2 text-[#415C6B] font-bad-script font-black'>Already registered?</p> 
             <Link to='/login' className='text-red-700 font-bad-script font-black'>Login</Link>
           </div>
         </form>
