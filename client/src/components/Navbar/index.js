@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
@@ -13,7 +13,7 @@ import emptyCart from '../../assets/images/empty_cart.png'
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
-  const [showDrop, setShowDrop] = useState(false);
+  
   return (
     <header>
       <nav>
