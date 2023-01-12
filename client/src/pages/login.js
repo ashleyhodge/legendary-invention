@@ -51,7 +51,7 @@ const Login = () => {
         Log in
       </h1>
       <div>
-        <form onSubmit={handleFormSubmit} className="my-[20px] border-[3px] border-[#BDCDD6] rounded p-[10px] mx-[20%]">
+        <form onSubmit={handleFormSubmit} className="my-[20px] lg:mx-[30%] border-[3px] border-[#BDCDD6] rounded p-[10px] mx-[20%]">
           <div className='mt-6 mx-12'>
               <div className='flex flex-col justify-center'>
                 <input 

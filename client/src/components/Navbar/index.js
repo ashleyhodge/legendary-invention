@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth';
+
 import { AiOutlineMenu } from "react-icons/ai"
 import { FaTiktok, FaPatreon, FaUserAlt } from "react-icons/fa"
 import { BsFacebook, BsInstagram, BsYoutube} from "react-icons/bs"
@@ -8,8 +10,10 @@ import topNav from '../../assets/images/mobile_nav_1.png'
 import bottomNav from '../../assets/images/mobile_nav_2.png'
 import emptyCart from '../../assets/images/empty_cart.png'
 
+
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
+  const [showDrop, setShowDrop] = useState(false);
   return (
     <header>
       <nav>
@@ -108,9 +112,7 @@ const Navbar = () => {
           </div>
       {/* Login and cart elements */}
           <div className="flex items-center">
-            <Link to='/signup'>
-              <FaUserAlt className="mr-4 mb-2 opacity-[50%] text-[#415C6B]" />
-            </Link>
+            <FaUserAlt className="mr-4 mb-2 opacity-[50%] text-[#415C6B]" />
             <Link to='/cart'>
               <img 
                 src={emptyCart}
