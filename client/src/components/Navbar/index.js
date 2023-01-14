@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
@@ -13,6 +13,7 @@ import emptyCart from '../../assets/images/empty_cart.png'
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
+  
   
   return (
     <header>
@@ -112,7 +113,16 @@ const Navbar = () => {
           </div>
       {/* Login and cart elements */}
           <div className="flex items-center">
-            <FaUserAlt className="mr-4 mb-2 opacity-[50%] text-[#415C6B]" />
+            {Auth.loggedIn() ? (
+              <Link to='/profile'>
+              <FaUserAlt className="mr-4 mb-2 opacity-[50%] text-[#415C6B]" />
+              </Link>
+            ): (
+              <Link to='/login'>
+              <FaUserAlt className="mr-4 mb-2 opacity-[50%] text-[#415C6B]" />
+              </Link>
+            )}
+            
             <Link to='/cart'>
               <img 
                 src={emptyCart}
