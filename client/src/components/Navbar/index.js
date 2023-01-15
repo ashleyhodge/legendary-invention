@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 import { AiOutlineMenu } from "react-icons/ai"
@@ -13,8 +13,15 @@ import emptyCart from '../../assets/images/empty_cart.png'
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
+  const navToggle = () => setShowNav(!showNav);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const toggle = () => setShowDropdown(!showDropdown);
   
-  
+  const logout = event => {
+    event.preventDefault();
+    Auth.logout()
+  }
+
   return (
     <header>
       <nav>
@@ -62,17 +69,10 @@ const Navbar = () => {
           </div>
           {/* Mobile Navbar */}
           <div>
-            {showNav ? (
               <AiOutlineMenu
-                onClick={() => setShowNav(!showNav)}
+                onClick={navToggle}
                 className="sm:hidden w-7 h-7 m-3"
               />
-              ) : (
-              <AiOutlineMenu
-                onClick={() => setShowNav(!showNav)}
-                className="sm:hidden w-7 h-7 m-3"
-              />
-            )}
             <div className="text-[20px] text-[#412117]">
               <ul className={
                 (showNav ? "left-0" : "-left-full") +
@@ -86,15 +86,15 @@ const Navbar = () => {
                   className="h-[220px] w-[240px]"
                   />
                 </li>
-                <li className="flex justify-center p-2 hover:text-[#C3706B]">
+                <Link to='/' onClick={navToggle} className="flex justify-center p-2 hover:text-[#C3706B]">
                   Home
-                </li>
+                </Link>
                 <li className="flex justify-center p-2 hover:text-[#C3706B]">
                   Shop
                 </li>
-                <li className="flex justify-center p-2 hover:text-[#C3706B]">
+                <Link to='/blog' onClick={navToggle} className="flex justify-center p-2 hover:text-[#C3706B]">
                   Blog
-                </li>
+                </Link>
                 <li className="flex justify-center p-2 hover:text-[#C3706B]">
                   Make
                 </li>
@@ -113,10 +113,22 @@ const Navbar = () => {
           </div>
       {/* Login and cart elements */}
           <div className="flex items-center">
+
+            {/* if logged in show dropdown menu, if not link to login page */}
             {Auth.loggedIn() ? (
-              <Link to='/profile'>
-              <FaUserAlt className="mr-4 mb-2 opacity-[50%] text-[#415C6B]" />
-              </Link>
+              <>
+              <FaUserAlt onClick={toggle}
+                className="mr-4 mb-2 opacity-[50%] text-[#415C6B] cursor-pointer"
+                />
+              <ul className={
+                (showDropdown ? "absolute" : "hidden") +
+                " mt-[140px] border py-2 px-4 text-[16px] rounded"
+              }>
+                <Link onClick={toggle} to='/profile'>Profile</Link>
+                <li>Saves</li>
+                <Link to="/login" onClick={logout}>Log out</Link>
+              </ul>
+              </>
             ): (
               <Link to='/login'>
               <FaUserAlt className="mr-4 mb-2 opacity-[50%] text-[#415C6B]" />
