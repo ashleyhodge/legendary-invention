@@ -1,10 +1,14 @@
 import { AiOutlineLike, AiOutlineDislike } from 'react-icons/ai';
+import CommentForm from '../CommentForm';
+import auth from '../../utils/auth';
 
 const Comments = ({ comments }) => {
   return (
     <div>
+
+      
       {comments && comments.map(comment => (
-      <div key={comment._id} className="border border-[4px] border-[#A3C0CD] mx-[20px] sm:mx-[70px] mt-[20px] p-[15px] ">
+      <div key={comment._id} className="border rounded-md border-[2px] border-[#A3C0CD] mx-[20px] sm:mx-[70px] mt-[20px] p-[15px] ">
         <div className="flex justify-between font-bad-script">
           <div>
             {/* profile image */}
@@ -30,6 +34,9 @@ const Comments = ({ comments }) => {
       </div>
       ))}
       <p className='text-end text-[20px] mt-2 mx-[25px] sm:mx-[75px] font-bad-script'>See all</p>
+      {auth.loggedIn() && (
+        <CommentForm />
+      )}
     </div>
   )
 }

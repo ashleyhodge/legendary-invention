@@ -39,3 +39,6 @@ export const QUERY_POST = gql`
     }
   }
 `
+
+// create 'me' query
+// create 'basic me' query for non logged in users
