@@ -1,8 +1,14 @@
 import  { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { ADD_COMMENT } from '../../utils/mutations';
+
+
 
 const CommentForm = () => {
   const [commentText, setCommentText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
+
+const [addComment, {error}] = useMutation(ADD_COMMENT);
   
   const handleChange = event => {
     if (event.target.value.length <= 300) {
@@ -13,8 +19,17 @@ const CommentForm = () => {
 
   const handleFormSubmit = async event => {
     event.preventDefault();
-    setCommentText('');
-    setCharacterCount(0);
+    try {
+      // add comment to database
+      await addComment({
+        variables: { commentText }
+      });
+      // clear form values
+      setCommentText('');
+      setCharacterCount(0);
+    } catch(e) {
+      console.log(e);
+    }
   }
 
   return (
@@ -35,6 +50,7 @@ const CommentForm = () => {
         onChange={handleChange}
         ></textarea>
         <p className='flex justify-end opacity-[50%] text-[12px]'>{characterCount} / 1000</p>
+        {error && <span>Something went wrong...</span>}
       </div>
       {/* add comment button */}
       <div className="flex justify-end">
