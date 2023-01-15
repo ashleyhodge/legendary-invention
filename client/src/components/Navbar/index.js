@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import Auth from '../../utils/auth';
 
 import { AiOutlineMenu } from "react-icons/ai"
