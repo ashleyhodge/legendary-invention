@@ -24,7 +24,7 @@ const SingleBlogPost = () => {
     <div>
       <div>
         <h1 className='text-center text-[36px] font-bad-script font-black text-[#415C6B] mt-[50px]'>
-          {post.postTitle}
+          {post.title}
         </h1>
         <p className='text-center opacity-[80%] text-[#415C6B]'>
           Published on {post.createdAt} by {post.username}

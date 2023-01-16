@@ -15,12 +15,17 @@ const typeDefs = gql`
   }
   type Post {
     _id: ID
-    postTitle: String
-    postText: String
+    title: String
+    intro: String
+    mainText: String
+    subheading1: String
+    subheading2: String
+    conclusion: String
     createdAt: String
     username: String
     commentCount: Int
-    postImage: String
+    postImage1: String
+    postImage2: String
     comments: [Comment]
   }
   type Comment {
@@ -43,7 +48,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!, isAdmin: Boolean): Auth
-    addPost(postTitle: String!, postText: String!): Post
+    addPost(title: String!, mainText: String!, intro: String!, subheading1: String!, subheading2: String, conclusion: String, postImage1: String, postImage2: String): Post
     addComment(postId: ID!, commentText: String!): Post
   }
 `

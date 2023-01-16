@@ -4,16 +4,29 @@ const dateFormat = require('../utils/dateFormat');
 
 const postSchema = new Schema(
   {
-    postTitle: {
+    title: {
       type: String,
       required: true,
       minlength: 4,
       maxlength: 100
     },
-    postText: {
+    intro: {
       type: String,
       required: true,
-      maxlength: 500
+    },
+    subheading1: {
+      type: String,
+      required: true,
+    },
+    mainText: {
+      type: String,
+      required: true,
+    },
+    subheading2: {
+      type: String,
+    },
+    conclusion: {
+      type: String,
     },
     createdAt: {
       type: Date,
@@ -24,7 +37,10 @@ const postSchema = new Schema(
       type: String,
       required: true
     },
-    postImage: {
+    postImage1: {
+      type: String
+    },
+    postImage2: {
       type: String
     },
     comments: [commentSchema]

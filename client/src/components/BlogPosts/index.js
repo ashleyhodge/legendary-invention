@@ -13,9 +13,9 @@ const BlogPosts = ({ posts }) => {
   posts = posts.map(function(post) {
     return (
       // Link images to /blog/postTitle/id
-      <Link to={`/blog/${post.postTitle}/${post._id}`}>
+      <Link to={`/blog/${post.title}/${post._id}`}>
         <div key={post._id} >
-          <img alt='post' className='mt-[30px] rounded-md' src={require(`../../assets/images/${post.postImage}`)}/>
+          <img alt='post' className='mt-[30px] rounded-md' src={require(`../../assets/images/${post.postImage1}`)}/>
         </div>
       </Link>
     )
