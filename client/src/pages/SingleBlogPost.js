@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_POST } from '../utils/queries';
 import Comments from '../components/Comments';
+import CommentForm from '../components/CommentForm';
+import auth from '../utils/auth';
 
 const SingleBlogPost = () => {
 
@@ -76,6 +78,9 @@ const SingleBlogPost = () => {
         </div>
         {/* Comment Form & list */}
         <Comments comments={post.comments} />
+        {auth.loggedIn() && (
+        <CommentForm postId={post._id} />
+        )}
       </div>
     </div>
   )

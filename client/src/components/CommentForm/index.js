@@ -1,10 +1,10 @@
 import  { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_COMMENT } from '../../utils/mutations';
+import dateFormat from '../../utils/dateFormat';
 
 
-
-const CommentForm = () => {
+const CommentForm = ({ postId }) => {
   const [commentText, setCommentText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -16,13 +16,15 @@ const [addComment, {error}] = useMutation(ADD_COMMENT);
       setCharacterCount(event.target.value.length)
     }
   }
+  const current = new Date();
+  const date = dateFormat(current)
 
   const handleFormSubmit = async event => {
     event.preventDefault();
     try {
       // add comment to database
       await addComment({
-        variables: { commentText }
+        variables: { commentText, postId }
       });
       // clear form values
       setCommentText('');
@@ -32,14 +34,15 @@ const [addComment, {error}] = useMutation(ADD_COMMENT);
     }
   }
 
+
   return (
     <form onSubmit={handleFormSubmit} className="border border-[2px] border-[#A3C0CD] rounded mx-[20px] sm:mx-[70px] mt-[20px] p-[15px] ">
       {/* username and img, date */}
-      <div className="flex">
+      <div className="flex font-bad-script text-[20px]">
         {/* <img /> */}
         <p>Username</p>
       </div>
-      <p>date</p>
+      <p className='opacity-[70%] font-bad-script'>{date}</p>
       {/* commentTextbox */}
       <div>
         <textarea 

@@ -1,6 +1,5 @@
 import { AiOutlineLike, AiOutlineDislike } from 'react-icons/ai';
-import CommentForm from '../CommentForm';
-import auth from '../../utils/auth';
+
 
 const Comments = ({ comments }) => {
   return (
@@ -34,9 +33,6 @@ const Comments = ({ comments }) => {
       </div>
       ))}
       <p className='text-end text-[20px] mt-2 mx-[25px] sm:mx-[75px] font-bad-script'>See all</p>
-      {auth.loggedIn() && (
-        <CommentForm />
-      )}
     </div>
   )
 }
