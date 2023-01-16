@@ -38,3 +38,28 @@ export const ADD_COMMENT = gql`
     }
   }
 `;
+
+export const ADD_POST = gql`
+  mutation AddPost($title: String!, $mainText: String!, $intro: String!, $subheading1: String!, $subheading2: String, $conclusion: String, $postImage1: String, $postImage2: String) {
+    addPost(title: $title, mainText: $mainText, intro: $intro, subheading1: $subheading1, subheading2: $subheading2, conclusion: $conclusion, postImage1: $postImage1, postImage2: $postImage2) {
+      _id
+      conclusion
+      createdAt
+      intro
+      mainText
+      postImage1
+      postImage2
+      subheading1
+      subheading2
+      title
+      username
+      comments {
+        _id
+        commentText
+        createdAt
+        username
+      }
+      commentCount
+    }
+  }
+`

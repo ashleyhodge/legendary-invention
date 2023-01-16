@@ -3,15 +3,16 @@ import { useQuery } from '@apollo/client';
 import { QUERY_POST } from '../utils/queries';
 import Comments from '../components/Comments';
 import CommentForm from '../components/CommentForm';
+import ReactMarkdown from 'react-markdown';
 import auth from '../utils/auth';
 
 const SingleBlogPost = () => {
 
-  const { postTitle: title } = useParams();
+  const { title } = useParams();
   const { id: postId} = useParams();
 
   const { loading, data } = useQuery(QUERY_POST, {
-    variables: { id: postId, postTitle: title }
+    variables: { id: postId, title: title }
   });
 
   const post = data?.post || {};
@@ -32,11 +33,9 @@ const SingleBlogPost = () => {
       </div>
       <div className='mx-[50px] mt-[50px] sm:flex '>
         {/* Post introduction */}
-        <div className='sm:w-3/4 text-center sm:text-start'>
-          <p>
-            {post.postText}
-          </p>
-        </div>
+        <ReactMarkdown className='sm:w-3/4 text-center sm:text-start'>
+          {post.intro}
+        </ReactMarkdown>
         <div className='sm:ml-[50px] sm:w-1/2'>
           <div className='border-[3px] border-[#A3C0CD]'>
             <h2 className='p-[30px] text-center font-bad-script font-black'>

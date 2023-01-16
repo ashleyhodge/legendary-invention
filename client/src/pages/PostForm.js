@@ -1,15 +1,89 @@
+import { useMutation } from "@apollo/client";
+import { useState } from "react";
+import { ADD_POST } from "../utils/mutations";
 
 
 const PostForm = () => {
+  const [title, setTitle] = useState('');
+  const [intro, setIntro] = useState('');
+  const [subheading1, setSubheading1] = useState('');
+  const [mainText, setMainText] = useState('');
+  const [subheading2, setSubheading2] = useState('');
+  const [conclusion, setConclusion] = useState('');
+  const [characterCount, setCharacterCount] = useState(0);
+
+  const [addPost, {error}] = useMutation(ADD_POST);
+
+  const handleTitle = event => {
+    if (event.target.value.length <= 100) {
+      setTitle(event.target.value)
+      setCharacterCount(event.target.value.length)
+    }
+    
+  }
+
+  // ** Handle Changes **
+  const handleIntro = event => {
+    setIntro(event.target.value);
+  }
+  const handleSubheading1 = event => {
+    setSubheading1(event.target.value)
+  }
+  const handleMainText = event => {
+    setMainText(event.target.value)
+  }
+  const handleSubheading2 = event => {
+    setSubheading2(event.target.value)
+  }
+  const handleConclusion = event => {
+    setConclusion(event.target.value)
+  }
+  // ** End Handle Changes **
+
+  const handleFormSubmit = async event => {
+    event.preventDefault();
+    try {
+      await addPost({
+        variables: {
+          title,
+          intro,
+          mainText,
+          subheading1,
+          subheading2,
+          conclusion,
+        }
+      })
+
+      setCharacterCount(0);
+      setTitle('');
+      setIntro('');
+      setMainText('');
+      setSubheading1('');
+      setSubheading2('');
+      setConclusion('');
+
+    } catch(e) {
+      console.log(e);
+    }
+
+  }
+
+
   return (
     <section>
-      <form className="mx-[70px]">
+      <form onSubmit={handleFormSubmit} className="mx-[70px]">
         {/* Title */}
-        <div className="flex justify-center my-3">
-          <textarea
-          className="w-3/4 border text-center rounded"
-          placeholder="Title"
-          ></textarea>
+        <div className="mt-12 mb-3">
+          <div className="flex justify-center">
+            <textarea
+              className="w-3/4 border text-center rounded"
+              placeholder="Title"
+              rows={1}
+              value={title}
+              onChange={handleTitle}
+            ></textarea>
+          </div>
+          <p className="flex justify-center items-center opacity-[50%] text-[12px]">{characterCount} / 100</p>
         </div>
         {/* First Name */}
         <div className="text-center">
@@ -23,6 +97,8 @@ const PostForm = () => {
           className="w-3/4 border rounded"
           placeholder="Introduction"
           rows={7}
+          value={intro}
+          onChange={handleIntro}
         ></textarea>
         </div>
         {/* Subheading1 */}
@@ -31,6 +107,8 @@ const PostForm = () => {
             className="w-3/4 border text-center rounded"
             placeholder="Subheading1"
             rows={1}
+            value={subheading1}
+            onChange={handleSubheading1}
           ></textarea>
         </div>
         {/* Main text */}
@@ -39,6 +117,8 @@ const PostForm = () => {
             className="w-3/4 border rounded"
             placeholder="Main Content"
             rows={10}
+            value={mainText}
+            onChange={handleMainText}
           ></textarea>
         </div>
         <div>
@@ -50,6 +130,8 @@ const PostForm = () => {
             className="w-3/4 border text-center rounded"
             placeholder="Subheading2"
             rows={1}
+            value={subheading2}
+            onChange={handleSubheading2}
           ></textarea>
         </div>
         {/* Conclusion */}
@@ -58,7 +140,14 @@ const PostForm = () => {
             className="w-3/4 border rounded"
             placeholder="Conclusion"
             rows={10}
+            value={conclusion}
+            onChange={handleConclusion}
           ></textarea>
+        </div>
+        <div className="flex justify-center">
+          <button className="border rounded-full bg-blue-100 px-2 py-1 w-3/4">
+            Post Article
+          </button>
         </div>
       </form>
     </section>

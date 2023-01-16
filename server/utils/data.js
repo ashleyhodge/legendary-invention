@@ -23,7 +23,7 @@ const data = {
 	posts: [
 {
 	title: 'Title',
-	intro: ' Intro',
+	intro: ' **Intro**',
 	subheading1: 'Subheading1',
 	mainText: 'Main text',
 	subheading2: 'Subheading2',
