@@ -16,6 +16,7 @@ const [addComment, {error}] = useMutation(ADD_COMMENT);
       setCharacterCount(event.target.value.length)
     }
   }
+  // get the current date
   const current = new Date();
   const date = dateFormat(current)
 
