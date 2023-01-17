@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { ADD_POST } from "../utils/mutations";
-
+import axios from 'axios';
 
 const PostForm = () => {
   const [title, setTitle] = useState('');
@@ -10,6 +10,7 @@ const PostForm = () => {
   const [mainText, setMainText] = useState('');
   const [subheading2, setSubheading2] = useState('');
   const [conclusion, setConclusion] = useState('');
+  const [postImage1, setPostImage1] = useState({postImage1: ''})
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addPost, {error}] = useMutation(ADD_POST);
@@ -37,6 +38,10 @@ const PostForm = () => {
   }
   const handleConclusion = event => {
     setConclusion(event.target.value)
+  }
+  const handlePostImage1 = event => {
+    setPostImage1({postImage1: event.target.files[0]})
+    console.log(postImage1)
   }
   // ** End Handle Changes **
 
@@ -71,7 +76,7 @@ const PostForm = () => {
 
   return (
     <section>
-      <form onSubmit={handleFormSubmit} className="mx-[70px]">
+      <form onSubmit={handleFormSubmit} encType='multipart/form-data' className="mx-[70px]">
         {/* Title */}
         <div className="mt-12 mb-3">
           <div className="flex justify-center">
@@ -90,7 +95,12 @@ const PostForm = () => {
           First Name
         </div>
         <div>
-          {/* postImage1 */}
+          <input
+            type='file'
+            accepts='.png, .jpg, jpeg'
+            name='postImage1'
+            onChange={handlePostImage1}
+          />
         </div>
         <div className="flex justify-center my-3">
         <textarea
