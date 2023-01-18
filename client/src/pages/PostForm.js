@@ -1,7 +1,6 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { ADD_POST } from "../utils/mutations";
-import axios from 'axios';
 
 const PostForm = () => {
   const [title, setTitle] = useState('');

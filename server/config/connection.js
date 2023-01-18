@@ -6,6 +6,9 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/legendary-inven
   useCreateIndex: true,
   useFindAndModify: false
 })
-.then(console.log('database connected'));
+const connection = mongoose.connection;
+connection.once("open", () =>
+  console.log("connected to database")
+);
 
 module.exports = mongoose.connection;
