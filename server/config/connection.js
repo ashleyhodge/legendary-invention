@@ -5,6 +5,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/legendary-inven
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false
-});
+})
+.then(console.log('database connected'));
 
 module.exports = mongoose.connection;
