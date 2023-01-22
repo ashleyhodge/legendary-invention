@@ -4,7 +4,7 @@ import { QUERY_POSTS } from "../utils/queries";
 import BlogPosts from "../components/BlogPosts";
 
 
-const Blog = () => {
+const Blog = (index) => {
   // useQuery hook to make query request
   const { loading, data } = useQuery(QUERY_POSTS);
 
@@ -18,7 +18,7 @@ const Blog = () => {
       ):(
         // render list of articles from BlogPost.js
         <div>
-          <BlogPosts posts={posts} />
+          <BlogPosts key={index} posts={posts} />
         </div>
       )}
       <div className="text-center font-bad-script mt-[50px]">

@@ -3,6 +3,7 @@ const express = require('express');
 const { authMiddleware } = require('./utils/auth')
 // import ApolloServer
 const { ApolloServer } = require('apollo-server-express');
+const { cloudinary } = require('./utils/cloudinary');
 
 // import our typeDefs and resolvers
 const { typeDefs, resolvers } = require('./schemas');
@@ -18,8 +19,37 @@ const server = new ApolloServer({
 
 const app = express();
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(express.urlencoded({ limit: '50mb', extended: false }));
+app.use(express.json({ limit: '50mb' }));
+
+app.get('/api/images', async (req, res) => {
+  try {
+    const {resources} = await cloudinary.search
+  .expression('folder:dev_setups/post_1')
+  .sort_by('public_id', 'desc')
+  .max_results(3)
+  .execute();
+  const publicIds = resources.map((file) => file.url);
+  res.send(publicIds);
+  } catch (error) {
+    console.log(error)
+  }
+  
+})
+
+app.post('/api/upload', async (req, res) => {
+  try {
+    const fileStr = req.body.data;
+    const uploadedResponse = await cloudinary.uploader.upload(fileStr, {
+      upload_preset: 'r0zimzi6'
+    });
+    console.log(uploadedResponse);
+    res.json({msg: 'YAYAYA'})
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({err: 'Something went wrong'})
+  }
+})
 
 // create a new instanceof an Apollo server with Graphql schema
 const startApolloServer = async (typeDefs, resolvers) => {

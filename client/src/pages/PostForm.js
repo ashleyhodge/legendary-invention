@@ -1,6 +1,7 @@
 import { useMutation } from "@apollo/client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ADD_POST } from "../utils/mutations";
+import { Image } from 'cloudinary-react';
 
 const PostForm = () => {
   const [title, setTitle] = useState('');
@@ -9,20 +10,22 @@ const PostForm = () => {
   const [mainText, setMainText] = useState('');
   const [subheading2, setSubheading2] = useState('');
   const [conclusion, setConclusion] = useState('');
-  const [postImage1, setPostImage1] = useState({postImage1: ''})
+  const [postImage1, setPostImage1] = useState('')
+  const [imageUrls, setImageUrls] = useState();
+  const [previewSource, setPreviewSource] = useState()
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addPost, {error}] = useMutation(ADD_POST);
 
+
+
+  // ** Handle Changes **
   const handleTitle = event => {
     if (event.target.value.length <= 100) {
       setTitle(event.target.value)
       setCharacterCount(event.target.value.length)
     }
-    
   }
-
-  // ** Handle Changes **
   const handleIntro = event => {
     setIntro(event.target.value);
   }
@@ -39,11 +42,20 @@ const PostForm = () => {
     setConclusion(event.target.value)
   }
   const handlePostImage1 = event => {
-    setPostImage1({postImage1: event.target.files[0]})
-    console.log(postImage1)
+    const file = event.target.files[0];
+    previewFile(file);
   }
   // ** End Handle Changes **
 
+  const previewFile = (file) =>{
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result);
+    }
+  }
+
+  // ** Handle Form Submits **
   const handleFormSubmit = async event => {
     event.preventDefault();
     try {
@@ -57,7 +69,6 @@ const PostForm = () => {
           conclusion,
         }
       })
-
       setCharacterCount(0);
       setTitle('');
       setIntro('');
@@ -65,16 +76,67 @@ const PostForm = () => {
       setSubheading1('');
       setSubheading2('');
       setConclusion('');
-
     } catch(e) {
       console.log(e);
     }
+  }
+  const handleSubmitFile = (e) => {
+    e.preventDefault();
+    if(!previewSource) return;
+    uploadImg(previewSource);
 
   }
+  // ** End Handle Submit Forms **
 
+  const uploadImg = async (base64EncodedImage) => {
+    console.log(base64EncodedImage)
+    try {
+      await fetch('/api/upload', {
+        method: 'POST',
+        body: JSON.stringify({data: base64EncodedImage}),
+        headers: {'Content-type': 'application/json'}
+      });
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const loadImages = async () => {
+    try {
+      const res = await fetch('/api/images');
+      const data = await res.json();
+      setImageUrls(data);
+      console.log(data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    loadImages();
+  }, [])
 
   return (
     <section>
+      <form onSubmit={handleSubmitFile}>
+        <div>
+          <input
+            type='file'
+            accepts='.png, .jpg, jpeg'
+            name='postImage1'
+            value={postImage1}
+            onChange={handlePostImage1}
+          />
+          <button type='submit'>Submit</button>
+        </div>
+        <div>
+        {previewSource && (
+          <img src={previewSource} alt='chosen' />
+        )}
+        </div>
+      </form>
+      {imageUrls && imageUrls.map((imageUrl, index) => (
+        <div onClick={() => {navigator.clipboard.writeText(imageUrl)}} key={index}>{imageUrl}</div>
+      ))}
       <form onSubmit={handleFormSubmit} encType='multipart/form-data' className="mx-[70px]">
         {/* Title */}
         <div className="mt-12 mb-3">
@@ -93,14 +155,7 @@ const PostForm = () => {
         <div className="text-center">
           First Name
         </div>
-        <div>
-          <input
-            type='file'
-            accepts='.png, .jpg, jpeg'
-            name='postImage1'
-            onChange={handlePostImage1}
-          />
-        </div>
+        
         <div className="flex justify-center my-3">
         <textarea
           className="w-3/4 border rounded"
