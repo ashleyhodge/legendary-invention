@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ADD_POST } from "../utils/mutations";
-import { Image } from 'cloudinary-react';
+
 
 const PostForm = () => {
   const [title, setTitle] = useState('');
@@ -11,6 +11,7 @@ const PostForm = () => {
   const [subheading2, setSubheading2] = useState('');
   const [conclusion, setConclusion] = useState('');
   const [postImage1, setPostImage1] = useState('')
+  const [fileName, setFileName] = useState('')
   const [imageUrls, setImageUrls] = useState();
   const [previewSource, setPreviewSource] = useState()
   const [characterCount, setCharacterCount] = useState(0);
@@ -43,9 +44,14 @@ const PostForm = () => {
   }
   const handlePostImage1 = event => {
     const file = event.target.files[0];
+    displayFileName(file);
     previewFile(file);
   }
   // ** End Handle Changes **
+
+  const displayFileName = (file) => {
+    setFileName(file.name);
+  }
 
   const previewFile = (file) =>{
     const reader = new FileReader();
@@ -53,6 +59,7 @@ const PostForm = () => {
     reader.onloadend = () => {
       setPreviewSource(reader.result);
     }
+
   }
 
   // ** Handle Form Submits **
@@ -84,12 +91,12 @@ const PostForm = () => {
     e.preventDefault();
     if(!previewSource) return;
     uploadImg(previewSource);
-
+    setFileName('')
   }
   // ** End Handle Submit Forms **
 
+
   const uploadImg = async (base64EncodedImage) => {
-    console.log(base64EncodedImage)
     try {
       await fetch('/api/upload', {
         method: 'POST',
@@ -111,9 +118,11 @@ const PostForm = () => {
       console.log(error);
     }
   }
-  useEffect(() => {
+  const handleClick = () => {
     loadImages();
-  }, [])
+  }
+    
+
 
   return (
     <section>
@@ -126,18 +135,18 @@ const PostForm = () => {
             value={postImage1}
             onChange={handlePostImage1}
           />
-          <button type='submit'>Submit</button>
+          <button onClick={handleClick} type='submit'>Submit</button>
         </div>
         <div>
-        {previewSource && (
-          <img src={previewSource} alt='chosen' />
+        {fileName && (
+          <div>{fileName}</div>
         )}
         </div>
       </form>
       {imageUrls && imageUrls.map((imageUrl, index) => (
         <div onClick={() => {navigator.clipboard.writeText(imageUrl)}} key={index}>{imageUrl}</div>
       ))}
-      <form onSubmit={handleFormSubmit} encType='multipart/form-data' className="mx-[70px]">
+      <form onSubmit={handleFormSubmit} className="mx-[70px]">
         {/* Title */}
         <div className="mt-12 mb-3">
           <div className="flex justify-center">
