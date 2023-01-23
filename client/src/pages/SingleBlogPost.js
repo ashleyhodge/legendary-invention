@@ -24,9 +24,12 @@ const SingleBlogPost = () => {
   return (
     <div>
       <div>
-        <h1 className='text-center text-[36px] font-bad-script font-black text-[#415C6B] mt-[50px]'>
+        <div className='text-center font-bad-script text-[36px] text'>
+          <ReactMarkdown>
           {post.title}
-        </h1>
+        </ReactMarkdown>
+        </div>
+        
         <p className='text-center opacity-[80%] text-[#415C6B]'>
           Published on {post.createdAt} by {post.username}
         </p>

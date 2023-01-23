@@ -1,18 +1,16 @@
 import { useMutation } from "@apollo/client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { ADD_POST } from "../utils/mutations";
+import { GrRefresh } from 'react-icons/gr';
+import { Image } from 'cloudinary-react';
 
 
 const PostForm = () => {
   const [title, setTitle] = useState('');
-  const [intro, setIntro] = useState('');
-  const [subheading1, setSubheading1] = useState('');
-  const [mainText, setMainText] = useState('');
-  const [subheading2, setSubheading2] = useState('');
-  const [conclusion, setConclusion] = useState('');
-  const [postImage1, setPostImage1] = useState('')
+  const [postText, setPostText] = useState('');
+  const [postImage, setPostImage] = useState('')
   const [fileName, setFileName] = useState('')
-  const [imageUrls, setImageUrls] = useState([]);
+  const [image, setImage] = useState([]);
   const [previewSource, setPreviewSource] = useState()
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -27,22 +25,10 @@ const PostForm = () => {
       setCharacterCount(event.target.value.length)
     }
   }
-  const handleIntro = event => {
-    setIntro(event.target.value);
+  const handlePostText = event => {
+    setPostText(event.target.value);
   }
-  const handleSubheading1 = event => {
-    setSubheading1(event.target.value)
-  }
-  const handleMainText = event => {
-    setMainText(event.target.value)
-  }
-  const handleSubheading2 = event => {
-    setSubheading2(event.target.value)
-  }
-  const handleConclusion = event => {
-    setConclusion(event.target.value)
-  }
-  const handlePostImage1 = event => {
+  const handlePostImage = event => {
     const file = event.target.files[0];
     displayFileName(file);
     previewFile(file);
@@ -68,20 +54,13 @@ const PostForm = () => {
       await addPost({
         variables: {
           title,
-          intro,
-          mainText,
-          subheading1,
-          subheading2,
-          conclusion,
+          postText,
+          postImage
         }
       })
       setCharacterCount(0);
       setTitle('');
-      setIntro('');
-      setMainText('');
-      setSubheading1('');
-      setSubheading2('');
-      setConclusion('');
+      setPostText('')
     } catch(e) {
       console.log(e);
     }
@@ -91,9 +70,9 @@ const PostForm = () => {
     if(!previewSource) return;
     uploadImg(previewSource);
     setFileName('')
+    setPreviewSource()
   }
   // ** End Handle Submit Forms **
-
 
   const uploadImg = async (base64EncodedImage) => {
     try {
@@ -107,46 +86,65 @@ const PostForm = () => {
     }
   }
 
-  // const loadImages = async () => {
-  //   try {
-  //     const res = await fetch('/api/images');
-  //     const data = await res.json();
-  //     setImageUrls(data);
-  //     console.log(data)
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   loadImages()
-  // }, [])
+  const loadImages = async () => {
+    try {
+      const res = await fetch('/api/images');
+      const data = await res.json();
+      setImage(data);
+      console.log(data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+  useEffect(() => {
+    loadImages()
+  }, [])
     
-
-
   return (
     <section>
-      <h1>Choose images that will be used in this article</h1>
-      <form onSubmit={handleSubmitFile}>
-        <div>
-          <input
-            type='file'
-            accepts='.png, .jpg, jpeg'
-            name='postImage1'
-            value={postImage1}
-            onChange={handlePostImage1}
-          />
-          <button type='submit'>Submit</button>
-        </div>
-        <div>
-        {fileName && (
-          <div>{fileName}</div>
-        )}
-        </div>
-      </form>
-      {/* {imageUrls && imageUrls.map((imageUrl, index) => (
-        <div onClick={() => {navigator.clipboard.writeText(imageUrl)}} key={index}>{imageUrl}</div>
-      ))} */}
+      <div className="flex flex-col justify-center items-center">
+        <h1>Upload images that will be used in this article:</h1>
+        <form onSubmit={handleSubmitFile}>
+          <div className="flex">
+            <label htmlFor='file'>
+              <div className="border-[#ACBA73] cursor-pointer rounded p-1 bg-[#ACBA73] hover:bg-[#A4B26A] text-white">
+                Select Image
+              </div>
+              <input
+              id="file"
+              type='file'
+              accepts='.png, .jpg, jpeg'
+              name='postImage1'
+              value={postImage}
+              onChange={handlePostImage}
+              className='text-white hidden'
+              />
+              
+            </label>
+            {fileName && (
+              <div>{fileName}</div>
+            )}
+            <button className="border rounded-full bg-blue-100 hover:bg-blue-200 px-3 py-1" type='submit'>Submit</button>
+          </div>
+            {previewSource && (
+              <img alt="alt" className="w-20" src={previewSource}></img>
+            )}
+        </form>
+          <div className="flex">
+            {image && image.map((image, index) => (
+              <div className='flex flex-row cursor-pointer hover:opacity-[70%] text-[12px]' onClick={() => {navigator.clipboard.writeText(image.url)}} key={index}>
+                <Image
+                  cloudName='decfxx7f2'
+                  publicId={image.public_id}
+                  width='100'
+                  className='flex'
+              />
+              </div>
+            ))}
+          </div>
+        <GrRefresh className="cursor-pointer" onClick={() => {loadImages()}} />
+      </div>
       <form onSubmit={handleFormSubmit} className="mx-[70px]">
         {/* Title */}
         <div className="mt-12 mb-3">
@@ -169,54 +167,11 @@ const PostForm = () => {
         <div className="flex justify-center my-3">
         <textarea
           className="w-3/4 border rounded"
-          placeholder="Introduction"
+          placeholder="Article"
           rows={7}
-          value={intro}
-          onChange={handleIntro}
+          value={postText}
+          onChange={handlePostText}
         ></textarea>
-        </div>
-        {/* Subheading1 */}
-        <div className="flex justify-center my-3">
-          <textarea
-            className="w-3/4 border text-center rounded"
-            placeholder="Subheading1"
-            rows={1}
-            value={subheading1}
-            onChange={handleSubheading1}
-          ></textarea>
-        </div>
-        {/* Main text */}
-        <div className="flex justify-center my-3">
-          <textarea
-            className="w-3/4 border rounded"
-            placeholder="Main Content"
-            rows={10}
-            value={mainText}
-            onChange={handleMainText}
-          ></textarea>
-        </div>
-        <div>
-          {/* postImage2 */}
-        </div>
-        {/* Subheading2 */}
-        <div className="flex justify-center my-3">
-          <textarea
-            className="w-3/4 border text-center rounded"
-            placeholder="Subheading2"
-            rows={1}
-            value={subheading2}
-            onChange={handleSubheading2}
-          ></textarea>
-        </div>
-        {/* Conclusion */}
-        <div className="flex justify-center my-3">
-          <textarea
-            className="w-3/4 border rounded"
-            placeholder="Conclusion"
-            rows={10}
-            value={conclusion}
-            onChange={handleConclusion}
-          ></textarea>
         </div>
         <div className="flex justify-center">
           <button className="border rounded-full bg-blue-100 px-2 py-1 w-3/4">

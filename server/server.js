@@ -26,15 +26,14 @@ app.get('/api/images', async (req, res) => {
   try {
     const {resources} = await cloudinary.search
   .expression('folder:dev_setups/post_1')
-  .sort_by('public_id', 'desc')
-  .max_results(3)
+  .sort_by('created_at', 'desc')
+  .max_results(7)
   .execute();
-  const publicIds = resources.map((file) => file.url);
-  res.send(publicIds);
+  const imageInfo = resources.map((file) => file);
+  res.send(imageInfo);
   } catch (error) {
     console.log(error)
   }
-  
 })
 
 app.post('/api/upload', async (req, res) => {
