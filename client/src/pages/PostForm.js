@@ -10,7 +10,7 @@ import { Image } from 'cloudinary-react';
 const PostForm = () => {
   const [title, setTitle] = useState('');
   const [postText, setPostText] = useState('');
-  const [postImage, setPostImage] = useState('')
+  const [postImages, setPostImages] = useState([])
   const [fileName, setFileName] = useState('')
   const [image, setImage] = useState([]);
   const [previewSource, setPreviewSource] = useState()
@@ -35,6 +35,9 @@ const PostForm = () => {
     displayFileName(file);
     previewFile(file);
   }
+  const handleTitleImage = event => {
+    setPostImages(event.target.value);
+  }
   // ** End Handle Changes **
 
   const displayFileName = (file) => {
@@ -57,7 +60,7 @@ const PostForm = () => {
         variables: {
           title,
           postText,
-          postImage
+          postImages
         }
       })
       setCharacterCount(0);
@@ -161,6 +164,16 @@ const PostForm = () => {
             ></input>
           </div>
           <p className="flex justify-center items-center opacity-[50%] text-[12px]">{characterCount} / 300</p>
+        </div>
+        <div className="flex justify-center">
+          <input 
+            className="w-3/4 border text-center rounded"
+            type='text'
+            value={postImages}
+            rows={1}
+            placeholder='Title Image URL'
+            onChange={handleTitleImage}
+          />
         </div>
         {/* First Name */}
         <div className="text-center">
