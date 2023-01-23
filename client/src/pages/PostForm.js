@@ -1,6 +1,8 @@
 import { useMutation } from "@apollo/client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ADD_POST } from "../utils/mutations";
+import SimpleMDEReact from 'react-simplemde-editor';
+import 'easymde/dist/easymde.min.css';
 import { GrRefresh } from 'react-icons/gr';
 import { Image } from 'cloudinary-react';
 
@@ -20,14 +22,14 @@ const PostForm = () => {
 
   // ** Handle Changes **
   const handleTitle = event => {
-    if (event.target.value.length <= 100) {
+    if (event.target.value.length <= 300) {
       setTitle(event.target.value)
       setCharacterCount(event.target.value.length)
     }
   }
-  const handlePostText = event => {
-    setPostText(event.target.value);
-  }
+  const handlePostText = useCallback((postText) => {
+    setPostText(postText);
+  }, []);
   const handlePostImage = event => {
     const file = event.target.files[0];
     displayFileName(file);
@@ -100,6 +102,8 @@ const PostForm = () => {
   useEffect(() => {
     loadImages()
   }, [])
+
+
     
   return (
     <section>
@@ -115,12 +119,10 @@ const PostForm = () => {
               id="file"
               type='file'
               accepts='.png, .jpg, jpeg'
-              name='postImage1'
-              value={postImage}
+              name='postImage'
               onChange={handlePostImage}
               className='text-white hidden'
               />
-              
             </label>
             {fileName && (
               <div>{fileName}</div>
@@ -149,29 +151,27 @@ const PostForm = () => {
         {/* Title */}
         <div className="mt-12 mb-3">
           <div className="flex justify-center">
-            <textarea
+            <input
               className="w-3/4 border text-center rounded"
+              type='text'
               placeholder="Title"
               rows={1}
               value={title}
               onChange={handleTitle}
-            ></textarea>
+            ></input>
           </div>
-          <p className="flex justify-center items-center opacity-[50%] text-[12px]">{characterCount} / 100</p>
+          <p className="flex justify-center items-center opacity-[50%] text-[12px]">{characterCount} / 300</p>
         </div>
         {/* First Name */}
         <div className="text-center">
           First Name
         </div>
-        
-        <div className="flex justify-center my-3">
-        <textarea
-          className="w-3/4 border rounded"
-          placeholder="Article"
-          rows={7}
-          value={postText}
-          onChange={handlePostText}
-        ></textarea>
+        <div>
+          <SimpleMDEReact 
+            className="border"
+            value={postText}
+            onChange={handlePostText}
+          />
         </div>
         <div className="flex justify-center">
           <button className="border rounded-full bg-blue-100 px-2 py-1 w-3/4">
