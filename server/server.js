@@ -27,7 +27,7 @@ app.get('/api/images', async (req, res) => {
     const {resources} = await cloudinary.search
   .expression('folder:dev_setups/post_1')
   .sort_by('created_at', 'desc')
-  .max_results(7)
+  .max_results(5)
   .execute();
   const imageInfo = resources.map((file) => file);
   res.send(imageInfo);
