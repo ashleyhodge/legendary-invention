@@ -12,7 +12,7 @@ const PostForm = () => {
   const [conclusion, setConclusion] = useState('');
   const [postImage1, setPostImage1] = useState('')
   const [fileName, setFileName] = useState('')
-  const [imageUrls, setImageUrls] = useState();
+  const [imageUrls, setImageUrls] = useState([]);
   const [previewSource, setPreviewSource] = useState()
   const [characterCount, setCharacterCount] = useState(0);
 
@@ -59,7 +59,6 @@ const PostForm = () => {
     reader.onloadend = () => {
       setPreviewSource(reader.result);
     }
-
   }
 
   // ** Handle Form Submits **
@@ -108,24 +107,26 @@ const PostForm = () => {
     }
   }
 
-  const loadImages = async () => {
-    try {
-      const res = await fetch('/api/images');
-      const data = await res.json();
-      setImageUrls(data);
-      console.log(data)
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  const handleClick = () => {
-    loadImages();
-  }
+  // const loadImages = async () => {
+  //   try {
+  //     const res = await fetch('/api/images');
+  //     const data = await res.json();
+  //     setImageUrls(data);
+  //     console.log(data)
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   loadImages()
+  // }, [])
     
 
 
   return (
     <section>
+      <h1>Choose images that will be used in this article</h1>
       <form onSubmit={handleSubmitFile}>
         <div>
           <input
@@ -135,7 +136,7 @@ const PostForm = () => {
             value={postImage1}
             onChange={handlePostImage1}
           />
-          <button onClick={handleClick} type='submit'>Submit</button>
+          <button type='submit'>Submit</button>
         </div>
         <div>
         {fileName && (
@@ -143,9 +144,9 @@ const PostForm = () => {
         )}
         </div>
       </form>
-      {imageUrls && imageUrls.map((imageUrl, index) => (
+      {/* {imageUrls && imageUrls.map((imageUrl, index) => (
         <div onClick={() => {navigator.clipboard.writeText(imageUrl)}} key={index}>{imageUrl}</div>
-      ))}
+      ))} */}
       <form onSubmit={handleFormSubmit} className="mx-[70px]">
         {/* Title */}
         <div className="mt-12 mb-3">

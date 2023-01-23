@@ -23,13 +23,10 @@ const data = {
 	posts: [
 {
 	title: 'Title',
-	intro: ' **Intro**',
-	subheading1: 'Subheading1',
-	mainText: 'Main text',
-	subheading2: 'Subheading2',
-	conclusion: 'Conclusion',
-	postImage1: 'post_bg_2.png',
-	postImage2: 'post_bg_2.png',
+	postText: '**Intro**',
+	postImages: [
+		'post_bg_2.png'
+	],
 	username: 'John',
 	comments: []
 },

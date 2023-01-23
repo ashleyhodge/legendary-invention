@@ -34,7 +34,7 @@ const SingleBlogPost = () => {
       <div className='mx-[50px] mt-[50px] sm:flex '>
         {/* Post introduction */}
         <ReactMarkdown className='sm:w-3/4 text-center sm:text-start'>
-          {post.intro}
+          {post.postText}
         </ReactMarkdown>
         <div className='sm:ml-[50px] sm:w-1/2'>
           <div className='border-[3px] border-[#A3C0CD]'>
@@ -45,26 +45,6 @@ const SingleBlogPost = () => {
           </div>
         </div>
         </div>
-        <div className='text-center sm:text-start'>
-          <div>
-            {/* post image 1 */}
-            images
-          </div>
-          <div>
-            {/* post main text 1 */}
-            text
-          </div>
-          <div>
-            {/* post image 2 */}
-            image
-          </div>
-          <div>
-            {/* post main text 2 */}
-            text
-          </div>
-        
-        
-      </div>
       {/* Comment Section */}
       <div>
         <div className='text-center font-black font-bad-script'>

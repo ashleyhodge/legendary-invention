@@ -10,23 +10,9 @@ const postSchema = new Schema(
       minlength: 4,
       maxlength: 100
     },
-    intro: {
+    postText: {
       type: String,
       required: true,
-    },
-    subheading1: {
-      type: String,
-      required: true,
-    },
-    mainText: {
-      type: String,
-      required: true,
-    },
-    subheading2: {
-      type: String,
-    },
-    conclusion: {
-      type: String,
     },
     createdAt: {
       type: Date,
@@ -37,11 +23,8 @@ const postSchema = new Schema(
       type: String,
       required: true
     },
-    postImage1: {
-      type: String
-    },
-    postImage2: {
-      type: String
+    postImages: {
+      type: [String]
     },
     comments: [commentSchema]
   },

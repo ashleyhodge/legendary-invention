@@ -6,14 +6,9 @@ query posts {
     _id
     username
     title
-    subheading2
-    subheading1
-    postImage2
-    postImage1
-    mainText
-    intro
+    postText
+    postImages
     createdAt
-    conclusion
     comments {
       _id
       commentText
@@ -36,14 +31,9 @@ query post($id: ID!) {
       createdAt
       username
     }
-    conclusion
     createdAt
-    intro
-    mainText
-    postImage1
-    postImage2
-    subheading1
-    subheading2
+    postText
+    postImages
     title
     username
   }
