@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { ADD_POST } from "../utils/mutations";
 import SimpleMDEReact from 'react-simplemde-editor';
 import 'easymde/dist/easymde.min.css';

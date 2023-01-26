@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react"
 import { Image } from 'cloudinary-react';
+import { GrRefresh } from 'react-icons/gr';
 
 
 const ImageForm = () => {
   const [fileName, setFileName] = useState('')
   const [previewSource, setPreviewSource] = useState()
   const [image, setImage] = useState([]);
-  const [overlay, setOverlay] = useState(true);
 
-  const styles = overlay ? {} : { background: "#412117", opacity: 0.5, zIndex: 1000 };
   // display name of file from remote 
   const displayFileName = (file) => {
     setFileName(file.name);
@@ -67,6 +66,7 @@ const ImageForm = () => {
   }, [])
 
 
+
   return(
     <section className="flex flex-col justify-center items-center">
       <h1>Upload images that will be used in this article:</h1>
@@ -110,6 +110,10 @@ const ImageForm = () => {
               </div>
             ))}
           </div>
+          <div className="flex justify-center pt-2">
+            <GrRefresh onClick={() => loadImages()} />
+          </div>
+          
         </div>
     </section>
   )
