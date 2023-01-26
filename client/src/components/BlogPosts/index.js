@@ -15,7 +15,7 @@ const BlogPosts = ({ posts }) => {
       // Link images to /blog/postTitle/id
       <Link key={post._id}  to={`/blog/${post.title}/${post._id}`}>
         <div>
-          <img alt='post' className='mt-[30px] rounded-md' src={post.postImages}/>
+          <img alt='post' className='mt-[30px] rounded-md drop-shadow hover:opacity-[70%]' src={post.postImages}/>
         </div>
       </Link>
     )
