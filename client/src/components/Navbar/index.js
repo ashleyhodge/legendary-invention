@@ -31,7 +31,7 @@ const Navbar = () => {
           <Link className="hidden sm:block" to='/'>
             <div className="m-3 hidden sm:flex">
               <img 
-                className="h-[130px] w-auto sm:h-[180px]"
+                className="h-[130px] w-auto sm:h-[150px]"
                 src={logo}
                 alt="Logo"
               />
