@@ -40,30 +40,30 @@ const Navbar = () => {
           {/* Desktop Navbar */}
           <div className="hidden sm:flex">
             
-            <ul className="flex font-black text-[22px] text-[#412117]">
+            <ul className="flex text-[22px] font-black text-[#412117]">
               <li className="mx-4  hover:text-[#C3706B] cursor-pointer">
                 <Link to='/'>
-                  Home
+                  home
                 </Link>
               </li>
               <li className="mx-4 hover:text-[#C3706B] cursor-pointer">
                 <Link to='/blog'>
-                  Blog
+                  blog
                 </Link>
               </li>
               <li className="mx-4 hover:text-[#C3706B] cursor-pointer">
                 <Link to='/shop'>
-                  Shop
+                  shop
                 </Link>
               </li>
               <li className="mx-4 hover:text-[#C3706B] cursor-pointer">
                 <Link to='/make'>
-                  Make
+                  make
                 </Link>
               </li>
               <li className=" mx-4 hover:text-[#C3706B] cursor-pointer">
                 <Link to='/'>
-                  Contact
+                  contact
                 </Link>
               </li>
             </ul>

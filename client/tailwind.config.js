@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'bad-script': ['"Bad Script"', 'cursive'],
+        'bad-script': ['"Raleway"', 'sans-serif'],
       }
     },
   },
