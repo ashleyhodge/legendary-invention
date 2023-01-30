@@ -70,12 +70,9 @@ const SingleBlogPost = () => {
           ><EmailIcon size={22} round /></EmailShareButton>
         </div>
       </div>
-      <div className='mx-[50px] mt-[50px] sm:flex'>
-        {/* Post introduction */}
-        <ReactMarkdown className='markdown sm:w-3/4 text-center sm:text-start font-roboto'>
-          {post.postText}
-        </ReactMarkdown>
-        <div className='sm:ml-[50px] sm:w-1/2'>
+      <div className='mx-[50px] mt-[50px]'>
+        {/* Post introduction */} 
+        <div className='sm:float-right m-5'>
           <div className='border-[3px] border-[#A3C0CD]'>
             <h2 className='p-[30px] text-center font-bad-script'>
               My Recommendations
@@ -83,6 +80,9 @@ const SingleBlogPost = () => {
             {/* recommendation links */}
           </div>
         </div>
+        <ReactMarkdown className='markdown text-center font-light font-roboto'>
+          {post.postText}
+        </ReactMarkdown>
         </div>
       {/* Comment Section */}
       <div>
