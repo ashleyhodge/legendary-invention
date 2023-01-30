@@ -5,7 +5,7 @@ import Auth from '../../utils/auth';
 
 import { AiOutlineMenu } from "react-icons/ai"
 import { FaTiktok, FaPatreon, FaUserAlt } from "react-icons/fa"
-import { BsFacebook, BsInstagram, BsYoutube} from "react-icons/bs"
+
 import logo from "../../assets/images/gingerly_knits_logo.png"
 import topNav from '../../assets/images/mobile_nav_1.png'
 import bottomNav from '../../assets/images/mobile_nav_2.png'
@@ -146,14 +146,6 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      {/* Social icons */}
-      <ul className="hidden sm:fixed sm:block text-[#CB9B92] top-[40%] sm:left-0 text-[20px] sm:text-[30px] z-10">
-        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[20px]'><a href="#" ><BsFacebook/></a></li>
-        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[20px]'><a href="#"><BsInstagram/></a></li>
-        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[20px]'><a href="#"><FaTiktok/></a></li>
-        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[20px]'><a href="#"><BsYoutube/></a></li>
-        <li className='relative transition-all hover:duration-300 hover:ease-in-out p-[10px] hover:px-[25px] sm:hover:px-[20px]'><a href="#"><FaPatreon /></a></li>
-      </ul>
     </header>
   )
 }

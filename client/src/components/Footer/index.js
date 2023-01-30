@@ -1,4 +1,6 @@
 import React from "react";
+import { BsFacebook, BsInstagram, BsYoutube} from "react-icons/bs";
+import { FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -18,11 +20,10 @@ const Footer = () => {
           Stay Connected
         </h1>
         <ul className="pt-4 opacity-[80%]">
-          <li>Follow</li>
-          <li>Like</li>
-          <li>Subscribe</li>
-          <li>Add</li>
-          <li>Follow</li>
+          <li>Follow us <a href="#"><BsInstagram/></a></li>
+          <li>Like us <a href="#" ><BsFacebook/></a></li>
+          <li>Subscribe <a href="#"><BsYoutube/></a></li>
+          <li>Follow us <a href="#"><FaTiktok/></a></li>
         </ul>
       </div>
     </div>

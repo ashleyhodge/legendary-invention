@@ -44,7 +44,7 @@ function App() {
                 element={<Home />}
               />
               <Route path='/blog'> 
-                <Route path=':postTitle/:id' element={<SingleBlogPost />} />
+                <Route path=':id' element={<SingleBlogPost />} />
                 <Route path='' element={<Blog />} />
               </Route>
               <Route 

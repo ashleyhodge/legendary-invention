@@ -4,6 +4,14 @@ import { QUERY_POST } from '../utils/queries';
 import Comments from '../components/Comments';
 import CommentForm from '../components/CommentForm';
 import ReactMarkdown from 'react-markdown';
+import { 
+  FacebookShareButton, FacebookIcon, 
+  PinterestShareButton, PinterestIcon, PinterestShareCount,
+  EmailShareButton, EmailIcon, 
+  TwitterShareButton, TwitterIcon,
+  TumblrShareButton, TumblrIcon,
+  RedditShareButton, RedditIcon
+} from 'react-share';
 import auth from '../utils/auth';
 
 const SingleBlogPost = () => {
@@ -23,13 +31,44 @@ const SingleBlogPost = () => {
 
   return (
     <div>
-      <div>
+      <div className='flex flex-col'>
         <h1 className='text-center text-[36px] font-bad-script font-black text-[#415C6B] mt-[50px]'>
           {post.title}
         </h1>
         <p className='text-center opacity-[80%] text-[#415C6B]'>
           Published on {post.createdAt} by {post.username}
         </p>
+        <div className='flex justify-center mt-2'>
+          {/* Share article buttons */}
+          {/* Update urls once hosted */}
+          <FacebookShareButton
+            url={'https://www.example.com'}
+            quote={'Dummy text!'}
+            hashtag="#muo"
+          ><FacebookIcon className='mr-1' size={22} round /></FacebookShareButton>
+          <PinterestShareButton
+            url={'https://www.example.com'}
+            media={`${post.postImages}`}
+          ><PinterestIcon className='mr-1' size={22} round /></PinterestShareButton>
+          <TwitterShareButton
+            url={'https://www.example.com'}
+            title={`${post.title}`}
+          ><TwitterIcon className='mr-1' size={22} round /></TwitterShareButton>
+          <TumblrShareButton
+            url={'https://www.example.com'}
+            title={`${post.title}`}
+          ><TumblrIcon className='mr-1' size={22} round /></TumblrShareButton>
+          <RedditShareButton
+            url={'https://www.example.com'}
+            title={`${post.title}`}
+          ><RedditIcon className='mr-1' size={22} round /></RedditShareButton>
+          <EmailShareButton
+            url={'https://www.example.com'}
+            subject={'Read this article!'}
+            body={'Dummy text!'}
+            separator=''
+          ><EmailIcon size={22} round /></EmailShareButton>
+        </div>
       </div>
       <div className='mx-[50px] mt-[50px] sm:flex '>
         {/* Post introduction */}
