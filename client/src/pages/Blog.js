@@ -23,7 +23,7 @@ const Blog = (index) => {
       )}
       <div className="text-center font-bad-script mt-[50px]">
         <h2 className="text-[26px] mb-[30px] text-[#412117]">What else would you like to hear about?</h2>
-        <p className="text-[20px] mx-auto px-12 text-[#415C6B]">While I love talking about my favorite topics, I’d love to write about things that interest my audience (you) as well. Leave a comment below any post or contact me directly!</p>
+        <p className="text-[20px] font-light mx-auto px-12 text-[#415C6B]">While I love talking about my favorite topics, I’d love to write about things that interest my audience (you) as well. Leave a comment below any post or contact me directly!</p>
       </div>
     </main>
   )

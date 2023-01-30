@@ -24,7 +24,7 @@ const Navbar = () => {
   }
 
   return (
-    <header>
+    <header >
       <nav>
         <div className="flex justify-between text-[20px] lg:justify-evenly items-center m-2 font-bad-script sm:mx-6">
           {/* Desktop Logo */}
@@ -122,11 +122,18 @@ const Navbar = () => {
                 />
               <ul className={
                 (showDropdown ? "absolute" : "hidden") +
-                " mt-[140px] border py-2 px-4 text-[16px] rounded"
+                " mt-[140px] border py-2 px-4 text-[16px] rounded font-light"
               }>
-                <Link onClick={toggle} to='/profile'>Profile</Link>
-                <li>Saves</li>
-                <Link to="/login" onClick={logout}>Log out</Link>
+                <li>
+                  <Link onClick={toggle} to='/profile'>profile</Link>
+                </li>
+                <li>
+                  <Link onClick={toggle} to='/profile'>post article</Link>
+                </li>
+                <li>saves</li>
+                <li>
+                  <Link to="/login" onClick={logout}>log out</Link>
+                </li>
               </ul>
               </>
             ): (

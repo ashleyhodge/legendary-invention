@@ -43,22 +43,21 @@ const [addComment, {error}] = useMutation(ADD_COMMENT);
         {/* <img /> */}
         <p>Username</p>
       </div>
-      <p className='opacity-[70%] font-bad-script'>{date}</p>
+      <p className='opacity-[70%] font-bad-script font-thin'>{date}</p>
       {/* commentTextbox */}
       <div>
         <textarea 
         className='border w-full mt-2'
         rows='3'
-        
         value={commentText}
         onChange={handleChange}
         ></textarea>
-        <p className='flex justify-end opacity-[50%] text-[12px]'>{characterCount} / 1000</p>
+        <p className='flex justify-end opacity-[50%] text-[12px] font-bad-script'>{characterCount} / 1000</p>
         {error && <span>Something went wrong...</span>}
       </div>
       {/* add comment button */}
       <div className="flex justify-end">
-        <button className="border rounded-full px-2 py-1 text-[16px]">
+        <button className="border rounded-full bg-[#ACBA73] text-white font-bad-script font-thin px-2 py-1 text-[16px]">
           Add Comment
         </button>
       </div>

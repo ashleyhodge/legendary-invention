@@ -7,7 +7,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
 const Signup = () => {
-  const [formState, setFormState] = useState({ firstName: '', lastName: '',username: '', email: '', password: '' });
+  const [formState, setFormState] = useState({ firstName: '', lastName: '',username: '', email: '', password: '', isAdmin: false });
   const [addUser, { error }] = useMutation(ADD_USER);
   // update state based on form input changes
   const handleChange = event => {
@@ -102,6 +102,12 @@ const Signup = () => {
                   placeholder="Repeat Password"
                   className="border-2 p-1 sm:m-2 mt-2 rounded"
                 />
+                <input
+                  id='isAdmin'
+                  type='checkbox'
+                  value={formState.isAdmin}
+                  onChange={handleChange}
+                ></input> Admin?
               </div>
             </div>
           <div className='flex justify-center mt-[20px]'>

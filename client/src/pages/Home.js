@@ -27,7 +27,7 @@ const Home = () => {
         <h2 className="text-[25px] sm:text-[28px] text-[#412117]">
           Favorite Video Tutorials
         </h2>
-        <p className="mx-[20px] mt-[10px] sm:text-[24px] sm:mx-[200px] text-[#8e4a45]">
+        <p className="mx-[20px] mt-[10px] sm:text-[20px] sm:mx-[200px] text-[#8e4a45] font-light">
           These are simply videos on how to work cool stitches, learn new techniques and find new project ideas. If you have a video you'd like me to share, let me know!
         </p>
         <div className="mt-[20px]">
