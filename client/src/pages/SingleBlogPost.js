@@ -72,7 +72,7 @@ const SingleBlogPost = () => {
       </div>
       <div className='mx-[50px] mt-[50px] sm:flex'>
         {/* Post introduction */}
-        <ReactMarkdown className='sm:w-3/4 text-center sm:text-start font-light font-roboto'>
+        <ReactMarkdown className='markdown sm:w-3/4 text-center sm:text-start font-roboto'>
           {post.postText}
         </ReactMarkdown>
         <div className='sm:ml-[50px] sm:w-1/2'>
