@@ -128,7 +128,7 @@ const Navbar = () => {
                   <Link onClick={toggle} to='/profile'>profile</Link>
                 </li>
                 <li>
-                  <Link onClick={toggle} to='/profile'>post article</Link>
+                  <Link onClick={toggle} to='/postform'>post article</Link>
                 </li>
                 <li>saves</li>
                 <li>

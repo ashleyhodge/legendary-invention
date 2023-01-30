@@ -70,14 +70,14 @@ const SingleBlogPost = () => {
           ><EmailIcon size={22} round /></EmailShareButton>
         </div>
       </div>
-      <div className='mx-[50px] mt-[50px] sm:flex '>
+      <div className='mx-[50px] mt-[50px] sm:flex'>
         {/* Post introduction */}
-        <ReactMarkdown className='sm:w-3/4 text-center sm:text-start font-roboto'>
+        <ReactMarkdown className='sm:w-3/4 text-center sm:text-start font-light font-roboto'>
           {post.postText}
         </ReactMarkdown>
         <div className='sm:ml-[50px] sm:w-1/2'>
           <div className='border-[3px] border-[#A3C0CD]'>
-            <h2 className='p-[30px] text-center font-bad-script font-black'>
+            <h2 className='p-[30px] text-center font-bad-script'>
               My Recommendations
             </h2>
             {/* recommendation links */}

@@ -6,6 +6,7 @@ import 'easymde/dist/easymde.min.css';
 import ImageForm from "../components/ImageForm";
 
 
+
 const PostForm = () => {
   const [title, setTitle] = useState('');
   const [postText, setPostText] = useState('');
@@ -48,6 +49,7 @@ const PostForm = () => {
     }
   }
   // ** End Handle Submit Forms **
+
 
   return (
     <section>
