@@ -20,7 +20,6 @@ const BlogPosts = ({ posts }) => {
       </Link>
     )
   })
-
   return (
     // render post images
     <div>

@@ -6,7 +6,7 @@ import CommentForm from '../components/CommentForm';
 import ReactMarkdown from 'react-markdown';
 import { 
   FacebookShareButton, FacebookIcon, 
-  PinterestShareButton, PinterestIcon, PinterestShareCount,
+  PinterestShareButton, PinterestIcon,
   EmailShareButton, EmailIcon, 
   TwitterShareButton, TwitterIcon,
   TumblrShareButton, TumblrIcon,
@@ -72,7 +72,7 @@ const SingleBlogPost = () => {
       </div>
       <div className='mx-[50px] mt-[50px] sm:flex '>
         {/* Post introduction */}
-        <ReactMarkdown className='sm:w-3/4 text-center sm:text-start'>
+        <ReactMarkdown className='sm:w-3/4 text-center sm:text-start font-roboto'>
           {post.postText}
         </ReactMarkdown>
         <div className='sm:ml-[50px] sm:w-1/2'>

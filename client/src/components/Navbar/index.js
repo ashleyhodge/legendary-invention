@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 import { AiOutlineMenu } from "react-icons/ai"
-import { FaTiktok, FaPatreon, FaUserAlt } from "react-icons/fa"
+import { FaUserAlt } from "react-icons/fa"
 
 import logo from "../../assets/images/gingerly_knits_logo.png"
 import topNav from '../../assets/images/mobile_nav_1.png'
@@ -40,7 +40,7 @@ const Navbar = () => {
           {/* Desktop Navbar */}
           <div className="hidden sm:flex">
             
-            <ul className="flex text-[22px] font-black text-[#412117]">
+            <ul className="flex text-[22px] font-light text-[#412117]">
               <li className="mx-4  hover:text-[#C3706B] cursor-pointer">
                 <Link to='/'>
                   home
@@ -114,7 +114,6 @@ const Navbar = () => {
           </div>
       {/* Login and cart elements */}
           <div className="flex items-center">
-
             {/* if logged in show dropdown menu, if not link to login page */}
             {Auth.loggedIn() ? (
               <>
@@ -135,7 +134,6 @@ const Navbar = () => {
               <FaUserAlt className="mr-4 mb-2 opacity-[50%] text-[#415C6B]" />
               </Link>
             )}
-            
             <Link to='/cart'>
               <img 
                 src={emptyCart}
