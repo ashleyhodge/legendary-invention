@@ -4,24 +4,18 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_ME, QUERY_USER } from '../../utils/queries';
 import { ADD_COMMENT } from '../../utils/mutations';
 import dateFormat from '../../utils/dateFormat';
-import Auth from '../../utils/auth';
 
 const CommentForm = ({ postId }) => {
-  const { username: userParam } = useParams();
   const [commentText, setCommentText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
-
   const [addComment, {error}] = useMutation(ADD_COMMENT);
 
-  const { loading, data } = useQuery(userParam ? QUERY_USER: QUERY_ME, {
+  const { username: userParam } = useParams();
+  const { data } = useQuery(userParam ? QUERY_USER: QUERY_ME, {
     variables: { username: userParam }
   });
-
   const user = data?.me || data?.user || {};
 
-
-
-  
   const handleChange = event => {
     if (event.target.value.length <= 300) {
       setCommentText(event.target.value);

@@ -15,15 +15,11 @@ import {
 import auth from '../utils/auth';
 
 const SingleBlogPost = () => {
-
-  
   const { id: postId} = useParams();
-
 
   const { loading, data } = useQuery(QUERY_POST, {
     variables: { id: postId }
   });
-
 
   const post = data?.post || {};
 
