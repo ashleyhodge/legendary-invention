@@ -16,12 +16,14 @@ import auth from '../utils/auth';
 
 const SingleBlogPost = () => {
 
-  const { title } = useParams();
+  
   const { id: postId} = useParams();
 
+
   const { loading, data } = useQuery(QUERY_POST, {
-    variables: { id: postId, title: title }
+    variables: { id: postId }
   });
+
 
   const post = data?.post || {};
 
@@ -32,7 +34,7 @@ const SingleBlogPost = () => {
   return (
     <div>
       <div className='flex flex-col'>
-        <h1 className='text-center text-[36px] font-bad-script font-black text-[#415C6B] mt-[50px]'>
+        <h1 className='text-center text-[36px] font-bad-script font-black text-[#415C6B] mt-[20px]'>
           {post.title}
         </h1>
         <p className='text-center opacity-[80%] text-[#415C6B] font-bad-script font-light'>
@@ -72,8 +74,8 @@ const SingleBlogPost = () => {
       </div>
       <div className='mx-[50px] mt-[50px]'>
         {/* Post introduction */} 
-        <div className='sm:float-right m-5'>
-          <div className='border-[3px] border-[#A3C0CD]'>
+        <div className='sm:float-right mb-5 mx-5'>
+          <div className='border-[3px] border-[#A3C0CD] sm:px-10'>
             <h2 className='p-[30px] text-center font-bad-script'>
               My Recommendations
             </h2>

@@ -1,14 +1,26 @@
 import  { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import { useParams } from 'react-router-dom';
+import { useQuery, useMutation } from '@apollo/client';
+import { QUERY_ME, QUERY_USER } from '../../utils/queries';
 import { ADD_COMMENT } from '../../utils/mutations';
 import dateFormat from '../../utils/dateFormat';
-
+import Auth from '../../utils/auth';
 
 const CommentForm = ({ postId }) => {
+  const { username: userParam } = useParams();
   const [commentText, setCommentText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
-const [addComment, {error}] = useMutation(ADD_COMMENT);
+  const [addComment, {error}] = useMutation(ADD_COMMENT);
+
+  const { loading, data } = useQuery(userParam ? QUERY_USER: QUERY_ME, {
+    variables: { username: userParam }
+  });
+
+  const user = data?.me || data?.user || {};
+
+
+
   
   const handleChange = event => {
     if (event.target.value.length <= 300) {
@@ -20,6 +32,7 @@ const [addComment, {error}] = useMutation(ADD_COMMENT);
   const current = new Date();
   const date = dateFormat(current)
 
+  
   const handleFormSubmit = async event => {
     event.preventDefault();
     try {
@@ -41,7 +54,7 @@ const [addComment, {error}] = useMutation(ADD_COMMENT);
       {/* username and img, date */}
       <div className="flex font-bad-script text-[20px]">
         {/* <img /> */}
-        <p>Username</p>
+        <p>{user.username}</p>
       </div>
       <p className='opacity-[70%] font-bad-script font-thin'>{date}</p>
       {/* commentTextbox */}
