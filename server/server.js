@@ -1,6 +1,7 @@
 const path = require('path');
 const nodemailer = require('nodemailer');
 const express = require('express');
+const cors = require("cors");
 const { authMiddleware } = require('./utils/auth')
 // import ApolloServer
 const { ApolloServer } = require('apollo-server-express');
@@ -21,6 +22,7 @@ const server = new ApolloServer({
 });
 
 const app = express();
+app.use(cors());
 
 app.use(express.urlencoded({ limit: '50mb', extended: false }));
 app.use(express.json({ limit: '50mb' }));
@@ -73,37 +75,26 @@ transporter.verify((err, success) => {
     : console.log(`=== Server is ready to take messages: ${success} ===`);
 });
 
-let mailOptions = {
-  from: "test@gmail.com",
-  to: process.env.EMAIL,
-  subject: "Nodemailer API",
-  text: "Hi from your nodemailer API",
-};
-
 app.post("/send", function (req, res) {
   let mailOptions = {
-    from: "test@gmail.com",
+    from: `${req.body.email}`,
     to: process.env.EMAIL,
-    subject: "Nodemailer API",
-    text: "Hi from your nodemailer API",
+    subject: `Message from: ${req.body.name}`,
+    text: `${req.body.message}`,
   };
 
   transporter.sendMail(mailOptions, function (err, data) {
     if (err) {
-      console.log("Error " + err);
+      res.json({
+        status: "fail",
+      });
     } else {
-      console.log("Email sent successfully");
-      res.json({ status: "Email sent" });
+      console.log("== Message Sent ==");
+      res.json({
+        status: "success",
+      });
     }
   });
-});
-
-transporter.sendMail(mailOptions, function (err, data) {
-  if (err) {
-    console.log("Error " + err);
-  } else {
-    console.log("Email sent successfully");
-  }
 });
 
 // create a new instanceof an Apollo server with Graphql schema
