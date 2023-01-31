@@ -11,6 +11,7 @@ import SingleBlogPost from './pages/SingleBlogPost';
 import Signup from './pages/Signup'
 import Login from './pages/Login';
 import PostForm from './pages/PostForm';
+import Contact from './pages/Contact';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -58,6 +59,10 @@ function App() {
               <Route 
                 path='/postform'
                 element={<PostForm />}
+              />
+              <Route 
+                path='/contact'
+                element={<Contact />}
               />
             </Routes>
             <Footer />

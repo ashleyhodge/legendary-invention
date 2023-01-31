@@ -62,7 +62,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className=" mx-4 hover:text-[#C3706B] cursor-pointer">
-                <Link to='/'>
+                <Link to='/contact'>
                   contact
                 </Link>
               </li>
@@ -88,25 +88,25 @@ const Navbar = () => {
                   />
                 </li>
                 <Link to='/' onClick={navToggle} className="flex justify-center p-2 hover:text-[#C3706B]">
-                  Home
+                  home
                 </Link>
                 <li className="flex justify-center p-2 hover:text-[#C3706B]">
-                  Shop
+                  shop
                 </li>
                 <Link to='/blog' onClick={navToggle} className="flex justify-center p-2 hover:text-[#C3706B]">
-                  Blog
+                  blog
                 </Link>
                 <li className="flex justify-center p-2 hover:text-[#C3706B]">
-                  Make
+                  make
                 </li>
-                <li className="flex justify-center p-2 hover:text-[#C3706B]">
-                  Contact
-                </li>
+                <Link to='/contact' onClick={navToggle} className="flex justify-center p-2 hover:text-[#C3706B]">
+                  contact
+                </Link>
                 <li className="flex justify-center">
                 <img 
                   src={bottomNav}
                   alt="knit supplies"
-                  className="h-[220px] w-[240px] flex items-center"
+                  className="h-[220px] w-[240px] bg-white flex items-center"
                   />
                 </li>
               </ul>
@@ -124,9 +124,9 @@ const Navbar = () => {
                 (showDropdown ? "absolute" : "hidden") +
                 " mt-[140px] border py-2 px-4 text-[16px] rounded font-light"
               }>
-                <li>
+                {/* <li>
                   <Link onClick={toggle} to='/profile'>profile</Link>
-                </li>
+                </li> */}
                 <li>
                   <Link onClick={toggle} to='/postform'>post article</Link>
                 </li>
