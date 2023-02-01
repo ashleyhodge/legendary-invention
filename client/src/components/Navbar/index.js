@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_ME, QUERY_USER } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 import { AiOutlineMenu } from "react-icons/ai"
 import { FaUserAlt } from "react-icons/fa"
-
 import logo from "../../assets/images/gingerly_knits_logo.png"
 import topNav from '../../assets/images/mobile_nav_1.png'
 import bottomNav from '../../assets/images/mobile_nav_2.png'
@@ -22,6 +23,13 @@ const Navbar = () => {
     event.preventDefault();
     Auth.logout()
   }
+
+  // query username for profile
+  const { username: userParam } = useParams();
+  const { data } = useQuery(userParam ? QUERY_USER: QUERY_ME, {
+    variables: { username: userParam }
+  });
+  const user = data?.me || data?.user || {};
 
   return (
     <header >
@@ -51,17 +59,17 @@ const Navbar = () => {
                   blog
                 </Link>
               </li>
-              <li className="mx-4 hover:text-[#C3706B] cursor-pointer">
+              {/* <li className="mx-4 hover:text-[#C3706B] cursor-pointer">
                 <Link to='/shop'>
                   shop
                 </Link>
-              </li>
-              <li className="mx-4 hover:text-[#C3706B] cursor-pointer">
+              </li> */}
+              {/* <li className="mx-4 hover:text-[#C3706B] cursor-pointer">
                 <Link to='/make'>
                   make
                 </Link>
-              </li>
-              <li className=" mx-4 hover:text-[#C3706B] cursor-pointer">
+              </li> */}
+              <li className=" ml-4 hover:text-[#C3706B] cursor-pointer">
                 <Link to='/contact'>
                   contact
                 </Link>
@@ -90,15 +98,15 @@ const Navbar = () => {
                 <Link to='/' onClick={navToggle} className="flex justify-center p-2 hover:text-[#C3706B]">
                   home
                 </Link>
-                <li className="flex justify-center p-2 hover:text-[#C3706B]">
+                {/* <li className="flex justify-center p-2 hover:text-[#C3706B]">
                   shop
-                </li>
+                </li> */}
                 <Link to='/blog' onClick={navToggle} className="flex justify-center p-2 hover:text-[#C3706B]">
                   blog
                 </Link>
-                <li className="flex justify-center p-2 hover:text-[#C3706B]">
+                {/* <li className="flex justify-center p-2 hover:text-[#C3706B]">
                   make
-                </li>
+                </li> */}
                 <Link to='/contact' onClick={navToggle} className="flex justify-center p-2 hover:text-[#C3706B]">
                   contact
                 </Link>
@@ -122,32 +130,28 @@ const Navbar = () => {
                 />
               <ul className={
                 (showDropdown ? "absolute" : "hidden") +
-                " mt-[140px] border py-2 px-4 text-[16px] rounded font-light"
-              }>
-                {/* <li>
-                  <Link onClick={toggle} to='/profile'>profile</Link>
-                </li> */}
-                <li>
-                  <Link onClick={toggle} to='/postform'>post article</Link>
-                </li>
-                <li>saves</li>
-                <li>
-                  <Link to="/login" onClick={logout}>log out</Link>
-                </li>
-              </ul>
-              </>
-            ): (
-              <Link to='/login'>
-              <FaUserAlt className="mr-4 mb-2 opacity-[50%] text-[#415C6B]" />
-              </Link>
-            )}
-            <Link to='/cart'>
+                " mt-[110px] right-3 border py-2 px-4 text-[16px] rounded font-light"
+                }>
+                  <li>
+                    <Link onClick={toggle} to={`/profile/${user._id}`}>profile</Link>
+                  </li>
+                  <li>
+                    <Link to="/login"  onClick={logout}>log out</Link>
+                  </li>
+                </ul>
+                </>
+              ): (
+                <Link to='/login'>
+                <FaUserAlt className="mr-4 mb-2 opacity-[50%] text-[#415C6B]" />
+                </Link>
+              )}
+            {/* <Link to='/cart'>
               <img 
                 src={emptyCart}
                 alt="empty cart"
                 className='w-[30px] mb-3'
               />
-            </Link>
+            </Link> */}
           </div>
         </div>
       </nav>

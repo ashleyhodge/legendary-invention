@@ -8,7 +8,7 @@ import { ADD_USER } from '../utils/mutations';
 
 const Signup = () => {
   const [formState, setFormState] = useState({ firstName: '', lastName: '',username: '', email: '', password: '', rpassword: '' });
-  const [isAdmin, setIsAdmin] = useState(false);
+  // const [isAdmin, setIsAdmin] = useState(false);
   const [addUser, { error }] = useMutation(ADD_USER);
   // update state based on form input changes
   const handleChange = event => {
@@ -21,9 +21,9 @@ const Signup = () => {
     });
   };
 
-  const handleIsAdmin = () => {
-    setIsAdmin(true);
-  }
+  // const handleIsAdmin = () => {
+  //   setIsAdmin(true);
+  // }
   // navigate to previous page or home
   // const navigate = useNavigate()
   // submit form
@@ -37,7 +37,7 @@ const Signup = () => {
         const { data } = await addUser({
           variables: { 
             ...formState,
-            isAdmin
+            // isAdmin
           }
         });
 
@@ -91,7 +91,8 @@ const Signup = () => {
                 <input 
                   id="email"
                   name="email"
-                  type="text"
+                  type="email"
+                  autoComplete='email'
                   value={formState.email}
                   onChange={handleChange}
                   placeholder="Email"
@@ -101,27 +102,35 @@ const Signup = () => {
                   id="password"
                   name="password"
                   type="password"
+                  autoComplete='new-password'
                   value={formState.password}
                   onChange={handleChange}
                   placeholder="Password"
                   className="border-2 p-1 sm:m-2 mt-2 rounded"
                 />
-                {/* add repeat password for authentication */}
                 <input 
                   id="rpassword"
                   name="rpassword"
                   type="password"
+                  autoComplete='repeat-password'
                   value={formState.rpassword}
                   onChange={handleChange}
                   placeholder="Repeat Password"
                   className="border-2 p-1 sm:m-2 mt-2 rounded"
                 />
-                <input
+                {/* Add update isAdmin to profile page */}
+
+                {/* <div>
+                  <label>Administrator? </label>
+                  <input
                   id='isAdmin'
                   type='checkbox'
                   value={isAdmin}
                   onChange={handleIsAdmin}
-                ></input> Admin?
+                  className=""
+                ></input>
+                </div> */}
+                
               </div>
             </div>
           <div className='flex justify-center mt-[20px]'>
