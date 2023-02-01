@@ -7,6 +7,7 @@ const data = {
 			lastName: 'Smith',
       email: 'admin@example.com',
       password: '123456',
+			rpassword: '123456',
       isAdmin: true,
 			post: []
     },
@@ -16,6 +17,7 @@ const data = {
 			lastName: 'Doe',
       email: 'user@example.com',
       password: '123456',
+			rpassword: '123456',
       isAdmin: false,
 			post: []
     },

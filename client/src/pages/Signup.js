@@ -7,7 +7,8 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
 const Signup = () => {
-  const [formState, setFormState] = useState({ firstName: '', lastName: '',username: '', email: '', password: '', isAdmin: false });
+  const [formState, setFormState] = useState({ firstName: '', lastName: '',username: '', email: '', password: '', rpassword: '' });
+  const [isAdmin, setIsAdmin] = useState(false);
   const [addUser, { error }] = useMutation(ADD_USER);
   // update state based on form input changes
   const handleChange = event => {
@@ -15,27 +16,40 @@ const Signup = () => {
 
     setFormState({
       ...formState,
-      [name]: value
+      [name]: value,
+
     });
-    
   };
+
+  const handleIsAdmin = () => {
+    setIsAdmin(true);
+  }
   // navigate to previous page or home
   // const navigate = useNavigate()
   // submit form
   const handleFormSubmit = async event => {
     event.preventDefault();
 
-    try {
-      const { data } = await addUser({
-        variables: { ...formState }
-      });
-      
-      Auth.login(data.addUser.token);
-      
-    } catch (e) {
-      console.error(e);
+    if(formState.password !== formState.rpassword) {
+      alert("Passwords don't match!")
+    } else {
+      try {
+        const { data } = await addUser({
+          variables: { 
+            ...formState,
+            isAdmin
+          }
+        });
+
+        Auth.login(data.addUser.token);
+        
+      } catch (e) {
+
+        console.error(e);
+      }
     }
   };
+
   return (
     <section>
       <h1 className="text-center text-[36px] font-black font-bad-script text-[#3D5765]">
@@ -86,7 +100,7 @@ const Signup = () => {
                 <input 
                   id="password"
                   name="password"
-                  type="text"
+                  type="password"
                   value={formState.password}
                   onChange={handleChange}
                   placeholder="Password"
@@ -94,10 +108,10 @@ const Signup = () => {
                 />
                 {/* add repeat password for authentication */}
                 <input 
-                  id="password"
-                  name="password"
-                  type="text"
-                  value={formState.password}
+                  id="rpassword"
+                  name="rpassword"
+                  type="password"
+                  value={formState.rpassword}
                   onChange={handleChange}
                   placeholder="Repeat Password"
                   className="border-2 p-1 sm:m-2 mt-2 rounded"
@@ -105,8 +119,8 @@ const Signup = () => {
                 <input
                   id='isAdmin'
                   type='checkbox'
-                  value={formState.isAdmin}
-                  onChange={handleChange}
+                  value={isAdmin}
+                  onChange={handleIsAdmin}
                 ></input> Admin?
               </div>
             </div>

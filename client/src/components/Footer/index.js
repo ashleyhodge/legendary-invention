@@ -4,7 +4,7 @@ import { FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className='text-center text-white font-bad-script bg-[#8e4545] opacity-[80%]'>
+    <div className='text-center text-white font-bad-script bg-[#8e4545] opacity-[80%] mt-5'>
       <div className="sm:flex sm:justify-center">
         <div className="sm:w-[50%] px-6">
           <h1 className=" text-center sm:text-left  font-black text-[24px] pt-5">

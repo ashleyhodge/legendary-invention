@@ -15,7 +15,7 @@ const PostForm = () => {
   const [postText, setPostText] = useState('');
   const [postImages, setPostImages] = useState([])
   const [characterCount, setCharacterCount] = useState(0);
-  const [addPost, {error}] = useMutation(ADD_POST);
+  const [addPost] = useMutation(ADD_POST);
 
   const { username: userParam } = useParams();
   const { data } = useQuery(userParam ? QUERY_USER: QUERY_ME, {

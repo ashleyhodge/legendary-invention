@@ -28,6 +28,11 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
+    rpassword: {
+      type: String,
+      required: true,
+      minlength: 5
+    },
     isAdmin: {
       type: Boolean,
       required: true,
