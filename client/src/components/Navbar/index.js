@@ -10,7 +10,7 @@ import { FaUserAlt } from "react-icons/fa"
 import logo from "../../assets/images/gingerly_knits_logo.png"
 import topNav from '../../assets/images/mobile_nav_1.png'
 import bottomNav from '../../assets/images/mobile_nav_2.png'
-import emptyCart from '../../assets/images/empty_cart.png'
+// import emptyCart from '../../assets/images/empty_cart.png'
 
 
 const Navbar = () => {
