@@ -5,6 +5,8 @@ const cors = require("cors");
 const { authMiddleware } = require('./utils/auth')
 // import ApolloServer
 const { ApolloServer } = require('apollo-server-express');
+const { ApolloServerPluginDrainHttpServer } = require("apollo-server-core");
+const http = require('http');
 const { cloudinary } = require('./utils/cloudinary');
 
 require('dotenv').config();
@@ -13,19 +15,26 @@ require('dotenv').config();
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
+
+
 const PORT = process.env.PORT || 3001;
 // create a new Apollo server and pass in schema data
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  context: authMiddleware
-});
+
+
+
 
 const app = express();
-app.use(cors());
 
+app.use(cors());
 app.use(express.urlencoded({ limit: '50mb', extended: false }));
 app.use(express.json({ limit: '50mb' }));
+
+
+const httpServer = http.createServer(app)
+
+
+
+
 
 
 // **** third-party API calls ***
@@ -96,7 +105,13 @@ app.post("/send", function (req, res) {
 
 
 // create a new instanceof an Apollo server with Graphql schema
-const startApolloServer = async (typeDefs, resolvers) => {
+const startApolloServer = async (app, httpServer) => {
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: authMiddleware,
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
+  });
   await server.start();
   // integrate our Apollo server with the Express application as middleware
   server.applyMiddleware({ app });
@@ -120,5 +135,5 @@ app.get('*', (req, res) => {
 
 
 // call async function the start server
-startApolloServer(typeDefs, resolvers);
+startApolloServer(app, httpServer);
 
