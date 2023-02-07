@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/ashleyhodge/legendary-invention/issues"
   },
-  "homepage": "https://github.com/ashleyhodge/legendary-invention#readme",
+  "homepage": "/",
   "devDependencies": {
     "concurrently": "^7.6.0"
   }
