@@ -8,7 +8,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "3d-react-carousal": "^5.0.0",
+    
     "axios": "^1.2.3",
     "cloudinary-react": "^1.8.1",
     "easymde": "^2.18.0",
@@ -24,8 +24,7 @@
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
     "react-share": "^4.4.1",
-    "react-simplemde-editor": "^5.2.0",
-    "web-vitals": "^2.1.4"
+    "react-simplemde-editor": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

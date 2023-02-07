@@ -20,7 +20,7 @@ const Home = () => {
       </Link>
       {/* Hero */}
       <div>
-        <HeroCarousel />
+        {/* <HeroCarousel /> */}
       </div>
       {/* Video Tutorials */}
       <div className="mt-[50px] sm:mt-[100px] font-bad-script font-black text-center">
