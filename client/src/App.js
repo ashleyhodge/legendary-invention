@@ -9,7 +9,7 @@ import Home from './pages/Home';
 import Blog from './pages/Blog';
 import SingleBlogPost from './pages/SingleBlogPost';
 import Signup from './pages/Signup'
-import Login from './pages/Login';
+import Login from './pages/Login'
 import PostForm from './pages/PostForm';
 import Contact from './pages/Contact';
 import Profile from './pages/Profile';
