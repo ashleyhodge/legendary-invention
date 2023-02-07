@@ -27,6 +27,8 @@ app.use(cors());
 app.use(express.urlencoded({ limit: '50mb', extended: false }));
 app.use(express.json({ limit: '50mb' }));
 
+
+// **** third-party API calls ***
 app.get('/api/images', async (req, res) => {
   try {
     const {resources} = await cloudinary.search
@@ -40,7 +42,6 @@ app.get('/api/images', async (req, res) => {
     console.log(error)
   }
 })
-
 app.post('/api/upload', async (req, res) => {
   try {
     const fileStr = req.body.data;
@@ -54,9 +55,6 @@ app.post('/api/upload', async (req, res) => {
     res.status(500).json({err: 'Something went wrong'})
   }
 })
-
-
-
 let transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -68,13 +66,11 @@ let transporter = nodemailer.createTransport({
     refreshToken: process.env.OAUTH_REFRESH_TOKEN,
   },
 });
-
 transporter.verify((err, success) => {
   err
     ? console.log(err)
     : console.log(`=== Server is ready to take messages: ${success} ===`);
 });
-
 app.post("/send", function (req, res) {
   let mailOptions = {
     from: `${req.body.email}`,
@@ -82,7 +78,6 @@ app.post("/send", function (req, res) {
     subject: `Message from: ${req.body.name}`,
     text: `${req.body.message}`,
   };
-
   transporter.sendMail(mailOptions, function (err, data) {
     if (err) {
       res.json({
@@ -96,6 +91,9 @@ app.post("/send", function (req, res) {
     }
   });
 });
+// *** End third-party API calls ***
+
+
 
 // create a new instanceof an Apollo server with Graphql schema
 const startApolloServer = async (typeDefs, resolvers) => {
@@ -105,11 +103,11 @@ const startApolloServer = async (typeDefs, resolvers) => {
 
   // Serve up static assets
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../../build')));
+  app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build'));
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
   
   db.once('open', () => {
@@ -120,7 +118,6 @@ app.get('*', (req, res) => {
     })
   };
 
-  
 
 // call async function the start server
 startApolloServer(typeDefs, resolvers);
