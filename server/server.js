@@ -7,11 +7,13 @@ const { authMiddleware } = require('./utils/auth')
 const { ApolloServer } = require('apollo-server-express');
 const { cloudinary } = require('./utils/cloudinary');
 
-require('dotenv').config();
+const dotenv = require('dotenv')
+dotenv.config();
 
+const db = require('./config/connection');
 // import our typeDefs and resolvers
 const { typeDefs, resolvers } = require('./schemas');
-const db = require('./config/connection');
+
 
 const PORT = process.env.PORT || 3001;
 // create a new Apollo server and pass in schema data
@@ -92,7 +94,6 @@ app.post("/send", function (req, res) {
   });
 });
 // *** End third-party API calls ***
-
 
 
 // create a new instanceof an Apollo server with Graphql schema
