@@ -136,6 +136,9 @@ const Navbar = () => {
                     <Link onClick={toggle} to={`/profile/${user._id}`}>profile</Link>
                   </li>
                   <li>
+                    <Link to="/postform"  onClick={toggle}>Create Article</Link>
+                  </li>
+                  <li>
                     <Link to="/login"  onClick={logout}>log out</Link>
                   </li>
                 </ul>
