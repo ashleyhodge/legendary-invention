@@ -15,7 +15,7 @@ import Contact from './pages/Contact';
 import Profile from './pages/Profile';
 
 const httpLink = createHttpLink({
-  uri: 'https://legendary-invention-ashleyhodge.vercel.app/graphql',
+  uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
