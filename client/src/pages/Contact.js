@@ -19,7 +19,7 @@ const Contact = () => {
   const submitEmail = async (e) => {
     e.preventDefault();
     
-    await fetch("/send", {
+    await fetch("/api/send", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
