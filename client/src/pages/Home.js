@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-// import HeroCarousel from "../components/Carousel";
+import HeroCarousel from "../components/Carousel";
 import logo from "../assets/images/gingerly_knits_logo.png"
 import VideoPlayer from "../components/VideoPlayer";
 import About from "../components/About";
@@ -20,7 +20,7 @@ const Home = () => {
       </Link>
       {/* Hero */}
       <div>
-        {/* <HeroCarousel /> */}
+        <HeroCarousel />
       </div>
       {/* Video Tutorials */}
       <div className="mt-[50px] sm:mt-[100px] font-bad-script font-black text-center">
