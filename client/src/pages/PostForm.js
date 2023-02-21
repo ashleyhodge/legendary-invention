@@ -66,9 +66,9 @@ const PostForm = () => {
   return (
     <section>
       {/* Upload images to cloudinary and then display them here so they can be used */}
-      <div className="flex flex-col justify-center items-center">
+      {/* <div className="flex flex-col justify-center items-center">
         <ImageForm />
-      </div>
+      </div> */}
       <form onSubmit={handleFormSubmit} className="mx-[70px]">
         {/* Title */}
         <div className="mt-12 mb-3">

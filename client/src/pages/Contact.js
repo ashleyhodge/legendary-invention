@@ -16,32 +16,32 @@ const Contact = () => {
     setMessage(e.target.value);
   }
 
-  const submitEmail = async (e) => {
-    e.preventDefault();
+  // const submitEmail = async (e) => {
+  //   e.preventDefault();
     
-    await fetch("http://localhost:3001/send", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({ name, email, message }),
-    })
-      .then((res) => res.json())
-      .then(async (res) => {
-        const resData = await res;
-        console.log(resData);
-        if (resData.status === "success") {
-          alert("Message Sent");
-        } else if (resData.status === "fail") {
-          alert("Message failed to send");
-        }
-      })
-      .then(() => {
-        setName('');
-        setEmail('');
-        setMessage('')
-      });
-  };
+  //   await fetch("http://localhost:3001/send", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //     },
+  //     body: JSON.stringify({ name, email, message }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then(async (res) => {
+  //       const resData = await res;
+  //       console.log(resData);
+  //       if (resData.status === "success") {
+  //         alert("Message Sent");
+  //       } else if (resData.status === "fail") {
+  //         alert("Message failed to send");
+  //       }
+  //     })
+  //     .then(() => {
+  //       setName('');
+  //       setEmail('');
+  //       setMessage('')
+  //     });
+  // };
 
   return(
     <section>
@@ -52,7 +52,7 @@ const Contact = () => {
           Reach out via social media or send me a message here to let me know how I’m doing, suggest blog   topics, tell me about your favorite patterns, or ask questions!
           I’ll try to respond as quickly as possible!</p>
       </div>
-      <form onSubmit={submitEmail}>
+      <form >
         <div className='mt-6 sm:ml-[20%]'>
             <div className='flex flex-col items-center'>
             <input 

@@ -7,8 +7,9 @@ const { authMiddleware } = require('./utils/auth')
 const { ApolloServer } = require('apollo-server-express');
 const { cloudinary } = require('./utils/cloudinary');
 
-const dotenv = require('dotenv')
-dotenv.config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config({path: __dirname+'/.env'});
+}
 
 const db = require('./config/connection');
 // import our typeDefs and resolvers
@@ -31,68 +32,68 @@ app.use(express.json({ limit: '50mb' }));
 
 
 // **** third-party API calls ***
-app.get('/api/images', async (req, res) => {
-  try {
-    const {resources} = await cloudinary.search
-  .expression('folder:dev_setups/post_1')
-  .sort_by('created_at', 'desc')
-  .max_results(5)
-  .execute();
-  const imageInfo = resources.map((file) => file);
-  res.send(imageInfo);
-  } catch (error) {
-    console.log(error)
-  }
-})
-app.post('/api/upload', async (req, res) => {
-  try {
-    const fileStr = req.body.data;
-    const uploadedResponse = await cloudinary.uploader.upload(fileStr, {
-      upload_preset: 'r0zimzi6'
-    });
-    console.log(uploadedResponse);
-    res.json({msg: 'YAYAYA'})
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({err: 'Something went wrong'})
-  }
-})
-let transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    type: "OAuth2",
-    user: process.env.EMAIL,
-    pass: process.env.WORD,
-    clientId: process.env.OAUTH_CLIENTID,
-    clientSecret: process.env.OAUTH_CLIENT_SECRET,
-    refreshToken: process.env.OAUTH_REFRESH_TOKEN,
-  },
-});
-transporter.verify((err, success) => {
-  err
-    ? console.log(err)
-    : console.log(`=== Server is ready to take messages: ${success} ===`);
-});
-app.post("/send", function (req, res) {
-  let mailOptions = {
-    from: `${req.body.email}`,
-    to: process.env.EMAIL,
-    subject: `Message from: ${req.body.name}`,
-    text: `${req.body.message}`,
-  };
-  transporter.sendMail(mailOptions, function (err, data) {
-    if (err) {
-      res.json({
-        status: "fail",
-      });
-    } else {
-      console.log("== Message Sent ==");
-      res.json({
-        status: "success",
-      });
-    }
-  });
-});
+// app.get('/api/images', async (req, res) => {
+//   try {
+//     const {resources} = await cloudinary.search
+//   .expression('folder:dev_setups/post_1')
+//   .sort_by('created_at', 'desc')
+//   .max_results(5)
+//   .execute();
+//   const imageInfo = resources.map((file) => file);
+//   res.send(imageInfo);
+//   } catch (error) {
+//     console.log(error)
+//   }
+// })
+// app.post('/api/upload', async (req, res) => {
+//   try {
+//     const fileStr = req.body.data;
+//     const uploadedResponse = await cloudinary.uploader.upload(fileStr, {
+//       upload_preset: 'r0zimzi6'
+//     });
+//     console.log(uploadedResponse);
+//     res.json({msg: 'YAYAYA'})
+//   } catch (error) {
+//     console.log(error)
+//     res.status(500).json({err: 'Something went wrong'})
+//   }
+// })
+// let transporter = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     type: "OAuth2",
+//     user: process.env.EMAIL,
+//     pass: process.env.WORD,
+//     clientId: process.env.OAUTH_CLIENTID,
+//     clientSecret: process.env.OAUTH_CLIENT_SECRET,
+//     refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+//   },
+// });
+// transporter.verify((err, success) => {
+//   err
+//     ? console.log(err)
+//     : console.log(`=== Server is ready to take messages: ${success} ===`);
+// });
+// app.post("/send", function (req, res) {
+//   let mailOptions = {
+//     from: `${req.body.email}`,
+//     to: process.env.EMAIL,
+//     subject: `Message from: ${req.body.name}`,
+//     text: `${req.body.message}`,
+//   };
+//   transporter.sendMail(mailOptions, function (err, data) {
+//     if (err) {
+//       res.json({
+//         status: "fail",
+//       });
+//     } else {
+//       console.log("== Message Sent ==");
+//       res.json({
+//         status: "success",
+//       });
+//     }
+//   });
+// });
 // *** End third-party API calls ***
 
 
@@ -108,7 +109,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client', 'build', 'index.js'));
+  res.sendFile(path.join(__dirname, '../client', 'build', 'index.html'));
 });
   
   db.once('open', () => {

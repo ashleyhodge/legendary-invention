@@ -9,6 +9,7 @@ const Blog = (index) => {
   const { loading, data } = useQuery(QUERY_POSTS);
 
   const posts = data?.posts || [];
+  
 
   return (
     <main>
